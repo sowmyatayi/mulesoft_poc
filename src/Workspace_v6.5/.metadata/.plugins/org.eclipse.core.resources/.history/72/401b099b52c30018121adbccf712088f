@@ -1,0 +1,20 @@
+{
+  "OrderDetails": {
+    "OrderId": "ABCDEFGHIJKL",
+    "OrderDate": "ABCDEFGHIJKLMNO",
+    "BillingAddress": {},
+    "ShippingAddress": true,
+    "ItemDetails": [
+      "ItemID": "1234",
+      "Qty": 2,
+      "ItemPrice": 2.55,
+      "Total": 5.10
+      ],
+    "ItemDetails": [
+      "ItemID": "1234",
+      "Qty": 2,
+      "ItemPrice": 2.55,
+      "Total": 5.10
+      ]
+  }
+}

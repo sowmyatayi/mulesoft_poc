@@ -1,0 +1,32 @@
+{
+	"$schema": "http://mule/poc/customerordermanagement/user",
+	"type": "object",
+	"properties": {
+		"CreateUserRequest": {
+			"type": "object",
+			"required": ["UserDetails"],
+			"properties": {
+				"UserDetails": {
+					"type": "object",
+					"required": ["UserID","FirstName","LastName","Password","Email","Phone","Address"],
+					"properties": {
+						"UserID": { "type": "string"},
+						"FirstName": { "type": "string"},
+						"LastName": { "type": "string"},
+						"Password": { "type": "string"},
+						"Email": { "type": "string"},
+						"Phone": { "type": "string"},
+						"Address": {
+							"type": "array",
+							"minItems": 1,
+							"maxItems": 2,
+							"items": {
+								"$ref": "../common/commontypes.json#/definitions/address"					
+							} 
+						}
+					}
+				}
+			}
+		}
+	}
+}

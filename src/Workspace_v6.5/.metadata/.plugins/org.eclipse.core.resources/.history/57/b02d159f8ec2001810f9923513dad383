@@ -1,0 +1,130 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<mule xmlns:metadata="http://www.mulesoft.org/schema/mule/metadata" xmlns="http://www.mulesoft.org/schema/mule/core" xmlns:doc="http://www.mulesoft.org/schema/mule/documentation" xmlns:spring="http://www.springframework.org/schema/beans" xmlns:db="http://www.mulesoft.org/schema/mule/db" xmlns:http="http://www.mulesoft.org/schema/mule/http" xmlns:ee="http://www.mulesoft.org/schema/mule/ee/core" xmlns:sfdc="http://www.mulesoft.org/schema/mule/sfdc" xmlns:apikit="http://www.mulesoft.org/schema/mule/apikit" xmlns:dw="http://www.mulesoft.org/schema/mule/ee/dw" xmlns:core="http://www.mulesoft.org/schema/mule/core" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-current.xsd
+http://www.mulesoft.org/schema/mule/db http://www.mulesoft.org/schema/mule/db/current/mule-db.xsd
+http://www.mulesoft.org/schema/mule/http http://www.mulesoft.org/schema/mule/http/current/mule-http.xsd
+http://www.mulesoft.org/schema/mule/ee/core http://www.mulesoft.org/schema/mule/ee/core/current/mule-ee.xsd
+http://www.mulesoft.org/schema/mule/sfdc http://www.mulesoft.org/schema/mule/sfdc/current/mule-sfdc.xsd
+http://www.mulesoft.org/schema/mule/apikit http://www.mulesoft.org/schema/mule/apikit/current/mule-apikit.xsd
+http://www.mulesoft.org/schema/mule/ee/dw http://www.mulesoft.org/schema/mule/ee/dw/current/dw.xsd
+http://www.mulesoft.org/schema/mule/core http://www.mulesoft.org/schema/mule/core/current/mule.xsd">
+    <http:listener-config name="createUser-httpListenerConfig" host="0.0.0.0" port="9630" doc:name="HTTP Listener Configuration"/>
+    <apikit:config name="user-config" raml="user.raml" consoleEnabled="false" keepRamlBaseUri="true" doc:name="Router">
+        <apikit:flow-mapping resource="/createuser" action="post" content-type="application/json" flow-ref="post:/createuser:application/json:createUser-config"/>
+        <apikit:flow-mapping resource="/loginuser" action="post" content-type="application/json" flow-ref="post:/loginuser:application/json:loginUser-config"/>
+    </apikit:config>
+    <sfdc:config name="Salesforce__Basic_Authentication" username="sowmyatayi@netro.com" password="Office#01" securityToken="TYGa6E1QAKMM4GyU3NvTVW9w" url="https://login.salesforce.com/services/Soap/u/41.0" doc:name="Salesforce: Basic Authentication"/>
+    <db:mysql-config name="MySQL_Configuration" host="localhost" port="3306" user="root" password="root" database="customer" doc:name="MySQL Configuration"/>
+    <flow name="createUser-main">
+        <http:listener config-ref="createUser-httpListenerConfig" path="/api/*" doc:name="HTTP"/>
+        <apikit:router config-ref="user-config" doc:name="APIkit Router"/>
+        <exception-strategy ref="createUser-apiKitGlobalExceptionMapping" doc:name="Reference Exception Strategy"/>
+    </flow>
+    <flow name="createUser-console">
+        <http:listener config-ref="createUser-httpListenerConfig" path="/console/*" doc:name="HTTP"/>
+        <apikit:console config-ref="user-config" doc:name="APIkit Console"/>
+    </flow>
+    <flow name="post:/createuser:application/json:createUser-config">
+        <logger message="=================INSERT INTO `customer`.`customer_user`(`FirstName`,`LastName`,`Email`,`MiddleName`,`UserName`,`Phone`,`Password`) VALUES(#[json:CreateUserRequest/UserDetails/FirstName],#[json:CreateUserRequest/UserDetails/LastName],#[json:CreateUserRequest/UserDetails/Email],'','',#[json:CreateUserRequest/UserDetails/Phone],#[json:CreateUserRequest/UserDetails/Password]);" level="INFO" doc:name="Logger"/>
+        <ee:multi-transactional action="BEGIN_OR_JOIN" doc:name="Transactional">
+            <db:insert config-ref="MySQL_Configuration" doc:name="Database">
+                <db:parameterized-query><![CDATA[INSERT INTO `customer`.`customer_user`
+(`FirstName`,`LastName`,`Email`,`MiddleName`,`UserName`,`Phone`,`Password`) VALUES
+(#[json:CreateUserRequest/UserDetails/FirstName],#[json:CreateUserRequest/UserDetails/LastName],
+#[json:CreateUserRequest/UserDetails/Email],'','',#[json:CreateUserRequest/UserDetails/Phone],
+#[json:CreateUserRequest/UserDetails/Password]);]]></db:parameterized-query>
+            </db:insert>
+            <logger message="#[payload]--------------#[payload &gt; 0]" level="INFO" doc:name="Logger"/>
+            <choice doc:name="Choice">
+                <when expression="#[payload &gt; 0]">
+                    <logger message="==========INSERT Successful" level="INFO" doc:name="Log_Successs"/>
+                    <dw:transform-message doc:name="Transform Message">
+                        <dw:set-payload><![CDATA[%dw 1.0
+%output application/json
+---
+{
+	CreateUserResponse: {
+		Status: "Success",
+		StatusMessage: "Success"
+	}
+}]]></dw:set-payload>
+                    </dw:transform-message>
+                    <set-payload value="#[payload]" doc:name="Set Payload"/>
+                </when>
+                <otherwise>
+                    <logger message="==============Insert failed" level="INFO" doc:name="Logger"/>
+                    <set-payload value="{  &quot;CreateUserResponse&quot;: {   &quot;Status&quot;: &quot;Failed&quot;,   &quot;StatusMessage&quot;: &quot;Failed&quot;   } }" doc:name="Set Payload"/>
+                </otherwise>
+            </choice>
+        </ee:multi-transactional>
+    </flow>
+    <apikit:mapping-exception-strategy name="createUser-apiKitGlobalExceptionMapping">
+        <apikit:mapping statusCode="404">
+            <apikit:exception value="org.mule.module.apikit.exception.NotFoundException"/>
+            <set-property propertyName="Content-Type" value="application/json" doc:name="Property"/>
+            <set-payload value="{ &quot;message&quot;: &quot;Resource not found&quot; }" doc:name="Set Payload"/>
+        </apikit:mapping>
+        <apikit:mapping statusCode="405">
+            <apikit:exception value="org.mule.module.apikit.exception.MethodNotAllowedException"/>
+            <set-property propertyName="Content-Type" value="application/json" doc:name="Property"/>
+            <set-payload value="{ &quot;message&quot;: &quot;Method not allowed&quot; }" doc:name="Set Payload"/>
+        </apikit:mapping>
+        <apikit:mapping statusCode="415">
+            <apikit:exception value="org.mule.module.apikit.exception.UnsupportedMediaTypeException"/>
+            <set-property propertyName="Content-Type" value="application/json" doc:name="Property"/>
+            <set-payload value="{ &quot;message&quot;: &quot;Unsupported media type&quot; }" doc:name="Set Payload"/>
+        </apikit:mapping>
+        <apikit:mapping statusCode="406">
+            <apikit:exception value="org.mule.module.apikit.exception.NotAcceptableException"/>
+            <set-property propertyName="Content-Type" value="application/json" doc:name="Property"/>
+            <set-payload value="{ &quot;message&quot;: &quot;Not acceptable&quot; }" doc:name="Set Payload"/>
+        </apikit:mapping>
+        <apikit:mapping statusCode="400">
+            <apikit:exception value="org.mule.module.apikit.exception.BadRequestException"/>
+            <set-property propertyName="Content-Type" value="application/json" doc:name="Property"/>
+            <set-payload value="{ &quot;message&quot;: &quot;Bad request&quot; }" doc:name="Set Payload"/>
+        </apikit:mapping>
+    </apikit:mapping-exception-strategy>
+    <flow name="post:/loginuser:application/json:loginUser-config">
+        <logger message="====================SELECT * FROM `customer`.`customer_user` WHERE `customer_user`.`UserName`=#[json:LoginUserRequest/UserDetails/UserId] and customer_user.Password=#[json:LoginUserRequest/UserDetails/Password];" level="INFO" doc:name="Logger" metadata:id="bfd9ab06-44e9-43e5-b872-3a4912033618"/>
+        <db:select config-ref="MySQL_Configuration" doc:name="Database">
+            <db:parameterized-query><![CDATA[SELECT * FROM `customer`.`customer_user` 
+WHERE `customer_user`.`UserName`=#[json:LoginUserRequest/UserDetails/UserId] and customer_user.Password=#[json:LoginUserRequest/UserDetails/Password];]]></db:parameterized-query>
+        </db:select>
+        <logger message="&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;#[payload]-- #[payload.size()]---#[payload.isEmpty()]" level="INFO" doc:name="Logger"/>
+        <choice doc:name="Choice">
+            <when expression="#[payload.size() &gt;0]">
+                <dw:transform-message doc:name="Transform Message" metadata:id="69340498-7501-4736-983d-22788afce1d0">
+                    <dw:input-payload/>
+                    <dw:set-payload><![CDATA[%dw 1.0
+%output application/json
+---
+{
+	LoginUserResponse: {
+		Status: "Success",
+		StatusMessage: "Successfully logged in",
+		UserName: string(payload.UserName)
+	}
+}]]></dw:set-payload>
+                </dw:transform-message>
+                <set-payload value="#[payload]" doc:name="Set Payload"/>
+            </when>
+            <otherwise>
+                <dw:transform-message doc:name="Transform Message" metadata:id="7dca0274-01c1-4019-8f90-ae31a7919091">
+                    <dw:input-payload/>
+                    <dw:set-payload><![CDATA[%dw 1.0
+%output application/json
+---
+{
+	LoginUserResponse: {
+		Status: "Failed",
+		StatusMessage: "User not found",
+		UserName: payload.UserName as :string
+	}
+}]]></dw:set-payload>
+                </dw:transform-message>
+                <set-payload value="#[payload]" doc:name="Set Payload"/>
+            </otherwise>
+        </choice>
+    </flow>
+</mule>

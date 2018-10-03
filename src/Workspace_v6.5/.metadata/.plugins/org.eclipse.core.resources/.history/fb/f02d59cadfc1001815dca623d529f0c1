@@ -1,0 +1,39 @@
+#%RAML 1.0
+title: User Management
+version: v1
+baseUri: http://localhost:9321/user/{version}
+securitySchemes: 
+  oauth_2_0:
+    type: OAuth 2.0
+    description: |
+      Login supports OAuth 2.0
+    settings: 
+      authorizationUri: https://dev-536852.oktapreview.com/oauth2/default/v1/authorize
+      accessTokenUri: https://dev-536852.oktapreview.com/oauth2/default/v1/token
+      authorizationGrants: [authorization_code,implicit,client_credentials,password]
+/loginuser:
+  displayName: Login User
+  post:
+    description: Login User
+    body:
+      application/json:
+        schema: !include LoginUserRequest.json
+    responses:
+      200:
+        body:
+          application/json:
+            schema: !include LoginUserResponse.json    
+/createuser:
+  displayName: Register User
+  post:
+    description: Register User
+    body:
+      application/json:
+        schema: !include CreateUserRequest.json
+    responses:
+      200:
+        body:
+          application/json:
+            schema: !include CreateUserResponse.json            
+
+ 

@@ -1,0 +1,11 @@
+{
+  "$schema": "http://mule/poc/customerordermanagement/order#",
+  "type": "object",
+  "properties": {
+	"OrderDetails": {
+		"type": "object",
+  		"properties": {
+  			
+  		}
+	}
+}

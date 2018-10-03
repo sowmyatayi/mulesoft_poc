@@ -1,0 +1,48 @@
+{
+  "$schema": "http://mule/poc/customerordermanagement/order#",
+  "properties": {
+    "OrderDetails": {
+      "type": "object",
+      "properties": {
+        "CustomerID": {
+          "type": "string"
+        },
+        "OrderDate": {
+          "type": "string"
+        },
+        "BillingAddress": {
+           "type": "object",
+	     	"properties": {
+	      		"Line1": { "type": "string" },
+	        	"Line2": { "type": "string" },
+	        	"City": { "type": "string" },
+	        	"State": { "type": "string" },
+	        	"Zip": { "type": "string" }
+	      	}
+        },
+        "ShippingAddress": {
+	     	"type": "object",
+	     	"properties": {
+	      		"Line1": { "type": "string" },
+	        	"Line2": { "type": "string" },
+	        	"City": { "type": "string" },
+	        	"State": { "type": "string" },
+	        	"Zip": { "type": "string" }
+	      	}
+        },
+        "ItemDetails": {
+          "type": "array",
+          "items": {
+              "type": "object",
+              "properties": {
+                "ItemID": {"type": "string"},
+                "Qty": {"type": "integer"},
+                "ItemPrice": {"type": "number"},
+                "Total": {"type": "number"}
+              }
+            }
+       }
+      }
+    }
+  }
+}

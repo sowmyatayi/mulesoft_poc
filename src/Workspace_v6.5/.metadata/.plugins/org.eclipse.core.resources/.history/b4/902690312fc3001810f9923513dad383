@@ -1,0 +1,4 @@
+{
+  "$schema": "http://mule/poc/customerordermanagement/user",
+  "type": "object",
+  "properties": {

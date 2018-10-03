@@ -1,0 +1,14 @@
+{
+	"$schema": "http://mule/poc/customerordermanagement/order#",
+	"type": "object",
+  	"properties": {
+    	"CreateOrderResponse": {
+      		"type": "object",
+      		"properties": {
+	      		"OrderID": { "type": "string"},
+	  			"Status": {"type": "string"},
+				"StatusMessage": {"type": "string"}
+			}
+		}
+	}
+}

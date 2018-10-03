@@ -1,0 +1,17 @@
+{
+  "OrderDetails": {
+    "OrderId": "ABCDEFGHIJKL",
+    "OrderDate": "ABCDEFGHIJKLMNO",
+    "BillingAddress": {},
+    "ShippingAddress": true,
+    "ItemDetails": [
+      false,
+      {},
+      192.0,
+      [
+        {},
+        {}
+      ]
+    ]
+  }
+}

@@ -1,0 +1,25 @@
+{
+  "$schema": "http://mule/poc/customerordermanagement/common#",
+  "definitions": {
+    "userdetails": {
+     	"type": "object",
+      	"required": ["UserId", "Password"],
+      	"properties": {
+        	"UserId": { "type": "string" },
+        	"Email": { "type": "string" },
+        	"Password": { "type": "string" }
+      	}
+    },
+     "address": {
+     "type": "object",
+      "properties": {
+        "Line1": { "type": "string" },
+        "Line2": { "type": "string" },
+        "City": { "type": "string" },
+        "State": { "type": "string" },
+        "Zip": { "type": "string" }
+      },
+      "required": ["Line1", "City", "State","Zip"]
+    }
+  }	
+}

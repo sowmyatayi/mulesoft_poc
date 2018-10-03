@@ -1,0 +1,194 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<mule xmlns:db="http://www.mulesoft.org/schema/mule/db" xmlns:ee="http://www.mulesoft.org/schema/mule/ee/core" xmlns:tracking="http://www.mulesoft.org/schema/mule/ee/tracking" xmlns="http://www.mulesoft.org/schema/mule/core" xmlns:apikit="http://www.mulesoft.org/schema/mule/apikit" xmlns:doc="http://www.mulesoft.org/schema/mule/documentation" xmlns:dw="http://www.mulesoft.org/schema/mule/ee/dw" xmlns:http="http://www.mulesoft.org/schema/mule/http" xmlns:metadata="http://www.mulesoft.org/schema/mule/metadata" xmlns:sfdc="http://www.mulesoft.org/schema/mule/sfdc" xmlns:spring="http://www.springframework.org/schema/beans" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-current.xsd
+http://www.mulesoft.org/schema/mule/db http://www.mulesoft.org/schema/mule/db/current/mule-db.xsd
+http://www.mulesoft.org/schema/mule/http http://www.mulesoft.org/schema/mule/http/current/mule-http.xsd
+http://www.mulesoft.org/schema/mule/ee/core http://www.mulesoft.org/schema/mule/ee/core/current/mule-ee.xsd
+http://www.mulesoft.org/schema/mule/sfdc http://www.mulesoft.org/schema/mule/sfdc/current/mule-sfdc.xsd
+http://www.mulesoft.org/schema/mule/apikit http://www.mulesoft.org/schema/mule/apikit/current/mule-apikit.xsd
+http://www.mulesoft.org/schema/mule/ee/dw http://www.mulesoft.org/schema/mule/ee/dw/current/dw.xsd
+http://www.mulesoft.org/schema/mule/core http://www.mulesoft.org/schema/mule/core/current/mule.xsd
+http://www.mulesoft.org/schema/mule/ee/tracking http://www.mulesoft.org/schema/mule/ee/tracking/current/mule-tracking-ee.xsd">
+    <http:listener-config name="createUser-httpListenerConfig" host="0.0.0.0" port="9630" doc:name="HTTP Listener Configuration" />
+    <apikit:config name="user-config" raml="experience/user.raml" consoleEnabled="false" doc:name="Router" keepRamlBaseUri="true" >
+        <apikit:flow-mapping resource="/createuser" action="post" content-type="application/json" flow-ref="post:/createuser:application/json:createUser-config"/>
+        <apikit:flow-mapping resource="/loginuser" action="post" content-type="application/json" flow-ref="post:/loginuser:application/json:loginUser-config"/>
+    </apikit:config>
+    <sfdc:config name="Salesforce__Basic_Authentication" username="sowmyatayi@netro.com" password="Office#01" securityToken="TYGa6E1QAKMM4GyU3NvTVW9w" proxyHost="internet.proxy.fedex.com" proxyPort="3128" proxyUsername="3644692" proxyPassword="Netro001" doc:name="Salesforce: Basic Authentication" url="https://login.salesforce.com/services/Soap/u/41.0" />
+    <db:mysql-config name="MySQL_Configuration" host="localhost" port="3306" user="root" password="root" database="customer" doc:name="MySQL Configuration"/>
+    <flow name="createUser-main">
+        <http:listener config-ref="createUser-httpListenerConfig" path="/api/*" doc:name="HTTP" />
+        <apikit:router config-ref="user-config" doc:name="APIkit Router" />
+        <exception-strategy ref="createUser-apiKitGlobalExceptionMapping" doc:name="Reference Exception Strategy" />
+    </flow>
+    <flow name="createUser-console">
+        <http:listener config-ref="createUser-httpListenerConfig" path="/console/*" doc:name="HTTP" />
+        <apikit:console config-ref="user-config" doc:name="APIkit Console" />
+    </flow>
+    <flow name="post:/createuser:createUser-config">
+        <logger message="&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt; Received request #[payload]" level="INFO" doc:name="Logger" />
+        <dw:transform-message doc:name="Transform Message" metadata:id="726ce55f-bf5e-4eae-9ad9-b80c43ce4990">
+            <dw:input-payload mimeType="application/json" />
+            <dw:set-payload><![CDATA[%dw 1.0
+%output application/java
+%namespace ns0 http://www.example.org/AccountDetails
+%namespace ns1 http://www.example.org/CommonTypes
+---
+[{
+	OwnerId: "0050b0000036DFH",
+	AccountId: "0010b00002E7FFQ",
+	EffectiveDate: now,
+	Status: "DRAFT",
+	BillingStreet: payload.CreateUserRequest.UserDetails.Address.Line1,
+	BillingCity: payload.CreateUserRequest.UserDetails.Address.City,
+	BillingState: payload.CreateUserRequest.UserDetails.Address.State,
+	BillingPostalCode: payload.CreateUserRequest.UserDetails.Address.Zip,
+	ShippingStreet: payload.CreateUserRequest.UserDetails.Address.Line1,
+	ShippingCity: payload.CreateUserRequest.UserDetails.Address.City,
+	ShippingState: payload.CreateUserRequest.UserDetails.Address.State,
+	ShippingPostalCode: payload.CreateUserRequest.UserDetails.Address.Zip
+}]]]></dw:set-payload>
+        </dw:transform-message>
+        <sfdc:create config-ref="Salesforce__Basic_Authentication" type="Order" doc:name="Salesforce">
+            <sfdc:objects ref="#[payload]" />
+        </sfdc:create>
+        <logger message="&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt; Response from saleforce #[payload]" level="INFO" doc:name="Logger" />
+        <dw:transform-message doc:name="Transform Message" metadata:id="15aa3c25-49a5-4856-a055-2da7f3b9a16f">
+            <dw:set-payload><![CDATA[%dw 1.0
+%output application/json
+---
+{
+	UserID: "TEST",
+	Response: "User created"
+}]]></dw:set-payload>
+        </dw:transform-message>
+        <set-payload value="#[payload]" doc:name="Set Payload" />
+    </flow>
+    <flow name="post:/createuser:application/json:createUser-config">
+        <logger message="&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt; Received request #[payload]" level="INFO" doc:name="Logger_create_user_req"/>
+        <dw:transform-message doc:name="Transform Message" metadata:id="30d56cdc-1ca3-4878-8eda-0a0fbf5de14d">
+            <dw:input-payload mimeType="application/json"/>
+            <dw:set-payload><![CDATA[%dw 1.0
+%output application/java
+---
+{
+	FirstName: payload.CreateUserRequest.UserDetails.FirstName,
+	LastName: payload.CreateUserRequest.UserDetails.LastName,
+	Email: payload.CreateUserRequest.UserDetails.EmailID,
+	Phone: payload.CreateUserRequest.UserDetails.Phone,
+	Password: payload.CreateUserRequest.UserDetails.Password
+}]]></dw:set-payload>
+        </dw:transform-message>
+        <logger message="=================INSERT INTO `customer`.`customer_user`(`FirstName`,`LastName`,`Email`,`MiddleName`,`UserName`,`Phone`,`Password`) VALUES(#[payload.FirstName],#[payload.LastName],#[payload.Email],'','',#[payload.Phone],#[payload.Password]);" level="INFO" doc:name="Logger"/>
+        <ee:multi-transactional action="BEGIN_OR_JOIN" doc:name="Transactional">
+            <db:insert config-ref="MySQL_Configuration" doc:name="Database">
+                <db:parameterized-query><![CDATA[INSERT INTO `customer`.`customer_user`
+(`FirstName`,`LastName`,`Email`,`MiddleName`,`UserName`,`Phone`,`Password`) VALUES
+(#[payload.FirstName],#[payload.LastName],#[payload.Email],'','',#[payload.Phone],#[payload.Password]);]]></db:parameterized-query>
+            </db:insert>
+            <logger message="#[payload]--------------#[payload &gt; 0]" level="INFO" doc:name="Logger"/>
+            <choice doc:name="Choice">
+                <when expression="#[payload &gt; 0]">
+                    <logger message="==========INSERT Successful" level="INFO" doc:name="Log_Successs"/>
+                    <dw:transform-message doc:name="Transform Message" metadata:id="7d01ccb9-bb99-437c-9670-9cd944402441">
+                        <dw:set-payload><![CDATA[%dw 1.0
+%output application/json
+---
+{
+	CreateUserResponse: {
+		Status: "Success",
+		StatusMessage: "Success"
+	}
+}]]></dw:set-payload>
+                    </dw:transform-message>
+                    <set-payload value="#[payload]" doc:name="Set Payload"/>
+                </when>
+                <otherwise>
+                    <logger message="==============Insert failed" level="INFO" doc:name="Logger"/>
+                    <set-payload value="{
+	&quot;CreateUserResponse&quot;: {
+		&quot;Status&quot;: &quot;Failed&quot;,
+		&quot;StatusMessage&quot;: &quot;Failed&quot;
+		}
+}" doc:name="Set Payload" metadata:id="f384fe03-8bba-4516-be52-b73f904ee06b"/>
+                </otherwise>
+            </choice>
+        </ee:multi-transactional>
+
+    </flow>
+    <apikit:mapping-exception-strategy name="createUser-apiKitGlobalExceptionMapping">
+        <apikit:mapping statusCode="404">
+            <apikit:exception value="org.mule.module.apikit.exception.NotFoundException" />
+            <set-property propertyName="Content-Type" value="application/json" doc:name="Property" />
+            <set-payload value="{ &quot;message&quot;: &quot;Resource not found&quot; }" doc:name="Set Payload" />
+        </apikit:mapping>
+        <apikit:mapping statusCode="405">
+            <apikit:exception value="org.mule.module.apikit.exception.MethodNotAllowedException" />
+            <set-property propertyName="Content-Type" value="application/json" doc:name="Property" />
+            <set-payload value="{ &quot;message&quot;: &quot;Method not allowed&quot; }" doc:name="Set Payload" />
+        </apikit:mapping>
+        <apikit:mapping statusCode="415">
+            <apikit:exception value="org.mule.module.apikit.exception.UnsupportedMediaTypeException" />
+            <set-property propertyName="Content-Type" value="application/json" doc:name="Property" />
+            <set-payload value="{ &quot;message&quot;: &quot;Unsupported media type&quot; }" doc:name="Set Payload" />
+        </apikit:mapping>
+        <apikit:mapping statusCode="406">
+            <apikit:exception value="org.mule.module.apikit.exception.NotAcceptableException" />
+            <set-property propertyName="Content-Type" value="application/json" doc:name="Property" />
+            <set-payload value="{ &quot;message&quot;: &quot;Not acceptable&quot; }" doc:name="Set Payload" />
+        </apikit:mapping>
+        <apikit:mapping statusCode="400">
+            <apikit:exception value="org.mule.module.apikit.exception.BadRequestException" />
+            <set-property propertyName="Content-Type" value="application/json" doc:name="Property" />
+            <set-payload value="{ &quot;message&quot;: &quot;Bad request&quot; }" doc:name="Set Payload" />
+        </apikit:mapping>
+    </apikit:mapping-exception-strategy>
+    <flow name="post:/loginuser:application/json:loginUser-config">
+        <dw:transform-message doc:name="Transform Message" metadata:id="d1867072-e80e-48be-a039-42e095fbec76">
+            <dw:input-payload mimeType="application/json"/>
+            <dw:set-payload><![CDATA[%dw 1.0
+%output application/java
+---
+{
+	UserId: payload.LoginUserRequest.UserDetails.UserID,
+	Password: payload.LoginUserRequest.UserDetails.Password
+}]]></dw:set-payload>
+        </dw:transform-message>
+        <logger message="&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt; #[payload]" level="INFO" doc:name="Logger"/>
+        <db:select config-ref="MySQL_Configuration" doc:name="Database">
+            <db:parameterized-query><![CDATA[SELECT * FROM `customer`.`customer_user` 
+WHERE `customer_user`.`UserName`=#[payload.UserID] and customer_user.Password=#[payload.Password];]]></db:parameterized-query>
+        </db:select>
+        <choice doc:name="Choice">
+            <when expression="#[payload.size() &gt;0]">
+                <dw:transform-message doc:name="Transform Message">
+                    <dw:set-payload><![CDATA[%dw 1.0
+%output application/json
+---
+{
+	LoginUserResponse: {
+		Status: "Success",
+		StatusMessage: "Successfully logged in",
+		UserName: payload.UserName
+	}
+}]]></dw:set-payload>
+                </dw:transform-message>
+                <set-payload value="#[payload]" doc:name="Set Payload" metadata:id="3aee74dc-9615-4f35-b595-4ad1b7c4875a"/>
+            </when>
+            <otherwise>
+                <dw:transform-message doc:name="Transform Message">
+                    <dw:set-payload><![CDATA[%dw 1.0
+%output application/java
+---
+{
+	LoginUserResponse: {
+		Status: "Failed",
+		StatusMessage: "User not found",
+		UserName: payload.UserName
+	}
+}]]></dw:set-payload>
+                </dw:transform-message>
+                <set-payload value="#[payload]" doc:name="Set Payload"/>
+            </otherwise>
+        </choice>
+    </flow>
+</mule>

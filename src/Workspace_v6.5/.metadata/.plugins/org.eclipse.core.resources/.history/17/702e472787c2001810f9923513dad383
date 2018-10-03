@@ -1,0 +1,14 @@
+{
+  "$schema": "http://mule/poc/customerordermanagement/common",
+  "definitions": {
+    "userdetails": {
+     "type": "object",
+      "properties": {
+        "UserId": { "type": "string" },
+        "Email": { "type": "string" },
+        "Password": { "type": "string" }
+      },
+      "required": ["UserId", "Password"]
+    }
+  }
+}

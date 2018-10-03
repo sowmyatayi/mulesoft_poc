@@ -1,0 +1,23 @@
+{
+"definitions": {
+        "person": {
+            "type": "object",
+            "required": ["first_name", "last_name", "age"],
+            "properties": {
+                "first_name": {"type": "string"},
+                "last_name": {"type": "string"},
+                "age": {"type": "integer"}
+            }
+        },
+        "football_team": {
+            "type": "object",
+            "required": ["team", "league"],
+            "properties": {
+                "team": {"type": "string"},
+                "league": {"type": "string"},
+                "year_founded": {"type": "integer"}
+            }
+        }
+
+    }
+}

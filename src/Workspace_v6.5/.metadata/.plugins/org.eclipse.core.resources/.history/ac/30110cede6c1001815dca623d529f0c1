@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<mule xmlns:metadata="http://www.mulesoft.org/schema/mule/metadata" xmlns:sfdc="http://www.mulesoft.org/schema/mule/sfdc"
+	xmlns:dw="http://www.mulesoft.org/schema/mule/ee/dw"
+	xmlns="http://www.mulesoft.org/schema/mule/core" xmlns:doc="http://www.mulesoft.org/schema/mule/documentation"
+	xmlns:spring="http://www.springframework.org/schema/beans" 
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.mulesoft.org/schema/mule/sfdc http://www.mulesoft.org/schema/mule/sfdc/current/mule-sfdc.xsd
+http://www.mulesoft.org/schema/mule/ee/dw http://www.mulesoft.org/schema/mule/ee/dw/current/dw.xsd
+http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-current.xsd
+http://www.mulesoft.org/schema/mule/core http://www.mulesoft.org/schema/mule/core/current/mule.xsd">
+<flow name="post:/createuser:createUser-config">
+        <logger message="&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt; Received request #[payload]" level="INFO" doc:name="Logger" />
+        <dw:transform-message doc:name="Transform Message" metadata:id="726ce55f-bf5e-4eae-9ad9-b80c43ce4990">
+            <dw:input-payload mimeType="application/json" />
+            <dw:set-payload><![CDATA[%dw 1.0
+%output application/java
+%namespace ns0 http://www.example.org/AccountDetails
+%namespace ns1 http://www.example.org/CommonTypes
+---
+[{
+	OwnerId: "0050b0000036DFH",
+	AccountId: "0010b00002E7FFQ",
+	EffectiveDate: now,
+	Status: "DRAFT",
+	BillingStreet: payload.CreateUserRequest.UserDetails.Address.Line1,
+	BillingCity: payload.CreateUserRequest.UserDetails.Address.City,
+	BillingState: payload.CreateUserRequest.UserDetails.Address.State,
+	BillingPostalCode: payload.CreateUserRequest.UserDetails.Address.Zip,
+	ShippingStreet: payload.CreateUserRequest.UserDetails.Address.Line1,
+	ShippingCity: payload.CreateUserRequest.UserDetails.Address.City,
+	ShippingState: payload.CreateUserRequest.UserDetails.Address.State,
+	ShippingPostalCode: payload.CreateUserRequest.UserDetails.Address.Zip
+}]]]></dw:set-payload>
+        </dw:transform-message>
+        <sfdc:create config-ref="Salesforce__Basic_Authentication" type="Account" doc:name="CreateAccount">
+            <sfdc:objects ref="#[payload]"/>
+        </sfdc:create>
+        <sfdc:create config-ref="Salesforce__Basic_Authentication" type="Order" doc:name="Salesforce">
+            <sfdc:objects ref="#[payload]" />
+        </sfdc:create>
+        <logger message="&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt; Response from saleforce #[payload]" level="INFO" doc:name="Logger" />
+        <dw:transform-message doc:name="Transform Message" metadata:id="15aa3c25-49a5-4856-a055-2da7f3b9a16f">
+            <dw:set-payload><![CDATA[%dw 1.0
+%output application/json
+---
+{
+	UserID: "TEST",
+	Response: "User created"
+}]]></dw:set-payload>
+        </dw:transform-message>
+        <set-payload value="#[payload]" doc:name="Set Payload" />
+    </flow>
+    </mule>

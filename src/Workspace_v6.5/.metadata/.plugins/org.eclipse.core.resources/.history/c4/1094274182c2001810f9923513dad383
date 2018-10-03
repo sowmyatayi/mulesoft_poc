@@ -1,0 +1,20 @@
+{
+  "$schema": "http://mule/poc/customerordermanagement/user/login",
+  "type": "object",
+  "properties": {
+    "LoginUserRequest": {
+      "type": "object",
+      "properties": { 
+      	"UserDetails": { 
+      		"$ref": "http://mule/poc/customerordermanagement/common/userdetails"
+      		 }
+  		 },
+      "required": [
+        "UserDetails"
+      ]
+    }
+  },
+  "required": [
+    "LoginUserRequest"
+  ]
+}

@@ -1,0 +1,8 @@
+#%RAML 1.0
+title: Login User
+version: v1
+baseUri: http://localhost:9321/loginUser/{vesrion}
+securitySchemes: 
+  oauth_2_0:
+    description: |
+      

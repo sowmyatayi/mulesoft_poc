@@ -1,0 +1,145 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<mule xmlns:http="http://www.mulesoft.org/schema/mule/http" xmlns:apikit="http://www.mulesoft.org/schema/mule/apikit" xmlns="http://www.mulesoft.org/schema/mule/core" xmlns:doc="http://www.mulesoft.org/schema/mule/documentation" xmlns:dw="http://www.mulesoft.org/schema/mule/ee/dw" xmlns:metadata="http://www.mulesoft.org/schema/mule/metadata" xmlns:sfdc="http://www.mulesoft.org/schema/mule/sfdc" xmlns:spring="http://www.springframework.org/schema/beans" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-current.xsd
+http://www.mulesoft.org/schema/mule/http http://www.mulesoft.org/schema/mule/http/current/mule-http.xsd
+http://www.mulesoft.org/schema/mule/sfdc http://www.mulesoft.org/schema/mule/sfdc/current/mule-sfdc.xsd
+http://www.mulesoft.org/schema/mule/apikit http://www.mulesoft.org/schema/mule/apikit/current/mule-apikit.xsd
+http://www.mulesoft.org/schema/mule/ee/dw http://www.mulesoft.org/schema/mule/ee/dw/current/dw.xsd
+http://www.mulesoft.org/schema/mule/core http://www.mulesoft.org/schema/mule/core/current/mule.xsd">
+
+    <http:listener-config xmlns:http="http://www.mulesoft.org/schema/mule/http" name="ordermanagement-httpListenerConfig" host="0.0.0.0" port="8081" doc:name="HTTP Listener Configuration"/>
+    <apikit:config xmlns:apikit="http://www.mulesoft.org/schema/mule/apikit" name="ordermanagement-config" raml="ordermanagement.raml" consoleEnabled="false" doc:name="Router" keepRamlBaseUri="true">
+        <apikit:flow-mapping resource="/createorder" action="post" content-type="application/json" flow-ref="post:/createorder:application/json:ordermanagement-config"/>
+        <apikit:flow-mapping resource="/getorders" action="get" flow-ref="get:/getorders:ordermanagement-config"/>
+    </apikit:config>
+    <flow name="post:/createuser:createUser-config">
+        <logger message="&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt; Received request #[payload]" level="INFO" doc:name="Logger" />
+        <dw:transform-message doc:name="Transform Message" metadata:id="726ce55f-bf5e-4eae-9ad9-b80c43ce4990" metadata:id="726ce55f-bf5e-4eae-9ad9-b80c43ce4990">
+            <dw:input-payload mimeType="application/json" />
+            <dw:set-payload><![CDATA[%dw 1.0
+%output application/java
+%namespace ns0 http://www.example.org/AccountDetails
+%namespace ns1 http://www.example.org/CommonTypes
+---
+[{
+	Id: payload.CreateUserRequest.UserDetails.EmailID,
+	IsDeleted: payload.CreateUserRequest.UserDetails.EmailID as :boolean,
+	MasterRecordId: payload.CreateUserRequest.UserDetails.EmailID,
+	Name: payload.CreateUserRequest.UserDetails.EmailID,
+	Type: payload.CreateUserRequest.UserDetails.EmailID,
+	ParentId: payload.CreateUserRequest.UserDetails.EmailID,
+	OwnerId: "0050b0000036DFH",
+	CreatedDate: payload.CreateUserRequest.UserDetails.EmailID as :datetime,
+	CreatedById: payload.CreateUserRequest.UserDetails.EmailID,
+	LastModifiedDate: payload.CreateUserRequest.UserDetails.EmailID as :datetime,
+	LastModifiedById: payload.CreateUserRequest.UserDetails.EmailID,
+	SystemModstamp: payload.CreateUserRequest.UserDetails.EmailID as :datetime,
+	LastActivityDate: payload.CreateUserRequest.UserDetails.EmailID as :date,
+	AccountId: "0010b00002E7FFQ",
+	EffectiveDate: now,
+	Status: "DRAFT",
+	BillingStreet: payload.CreateUserRequest.UserDetails.Address.Line1,
+	BillingCity: payload.CreateUserRequest.UserDetails.Address.City,
+	BillingState: payload.CreateUserRequest.UserDetails.Address.State,
+	BillingPostalCode: payload.CreateUserRequest.UserDetails.Address.Zip,
+	BillingCountry: payload.CreateUserRequest.UserDetails.EmailID,
+	BillingLatitude: payload.CreateUserRequest.UserDetails.EmailID as :number,
+	BillingLongitude: payload.CreateUserRequest.UserDetails.EmailID as :number,
+	BillingGeocodeAccuracy: payload.CreateUserRequest.UserDetails.EmailID,
+	ShippingStreet: payload.CreateUserRequest.UserDetails.Address.Line1,
+	ShippingCity: payload.CreateUserRequest.UserDetails.Address.City,
+	ShippingState: payload.CreateUserRequest.UserDetails.Address.State,
+	ShippingPostalCode: payload.CreateUserRequest.UserDetails.Address.Zip,
+	ShippingCountry: payload.CreateUserRequest.UserDetails.EmailID,
+	ShippingLatitude: payload.CreateUserRequest.UserDetails.EmailID as :number,
+	ShippingLongitude: payload.CreateUserRequest.UserDetails.EmailID as :number,
+	ShippingGeocodeAccuracy: payload.CreateUserRequest.UserDetails.EmailID,
+	Phone: payload.CreateUserRequest.UserDetails.EmailID,
+	Fax: payload.CreateUserRequest.UserDetails.EmailID,
+	AccountNumber: payload.CreateUserRequest.UserDetails.EmailID,
+	Website: payload.CreateUserRequest.UserDetails.EmailID,
+	PhotoUrl: payload.CreateUserRequest.UserDetails.EmailID,
+	Sic: payload.CreateUserRequest.UserDetails.EmailID,
+	Industry: payload.CreateUserRequest.UserDetails.EmailID,
+	AnnualRevenue: payload.CreateUserRequest.UserDetails.EmailID,
+	NumberOfEmployees: payload.CreateUserRequest.UserDetails.EmailID as :number,
+	Ownership: payload.CreateUserRequest.UserDetails.EmailID,
+	TickerSymbol: payload.CreateUserRequest.UserDetails.EmailID,
+	Description: payload.CreateUserRequest.UserDetails.EmailID,
+	Rating: payload.CreateUserRequest.UserDetails.EmailID,
+	Site: payload.CreateUserRequest.UserDetails.EmailID
+}]]]></dw:set-payload>
+        </dw:transform-message>
+        <sfdc:create config-ref="Salesforce__Basic_Authentication" type="Account" doc:name="CreateAccount">
+            <sfdc:objects ref="#[payload]" />
+        </sfdc:create>
+        <dw:transform-message doc:name="Transform Message">
+            <dw:set-payload><![CDATA[%dw 1.0
+%output application/java
+---
+payload map ((payload01 , indexOfPayload01) -> {
+	OwnerId: payload01.id,
+	ContractId: payload01.id,
+	OriginalOrderId: payload01.id,
+	EffectiveDate: payload01.id as :date,
+	Status: payload01.id,
+	StatusCode: payload01.id
+})]]></dw:set-payload>
+        </dw:transform-message>
+        <sfdc:create config-ref="Salesforce__Basic_Authentication" type="Order" doc:name="Salesforce">
+            <sfdc:objects ref="#[payload]" />
+        </sfdc:create>
+        <logger message="&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt; Response from saleforce #[payload]" level="INFO" doc:name="Logger" />
+        <dw:transform-message doc:name="Transform Message" metadata:id="15aa3c25-49a5-4856-a055-2da7f3b9a16f" metadata:id="15aa3c25-49a5-4856-a055-2da7f3b9a16f">
+            <dw:set-payload><![CDATA[%dw 1.0
+%output application/json
+---
+{
+	UserID: "TEST",
+	Response: "User created"
+}]]></dw:set-payload>
+        </dw:transform-message>
+        <set-payload value="#[payload]" doc:name="Set Payload" />
+    </flow>
+    <flow name="ordermanagement-main">
+        <http:listener xmlns:http="http://www.mulesoft.org/schema/mule/http" config-ref="ordermanagement-httpListenerConfig" path="/api/*" doc:name="HTTP"/>
+        <apikit:router xmlns:apikit="http://www.mulesoft.org/schema/mule/apikit" config-ref="ordermanagement-config" doc:name="APIkit Router"/>
+        <exception-strategy ref="ordermanagement-apiKitGlobalExceptionMapping" doc:name="Reference Exception Strategy"/>
+    </flow>
+    <flow name="ordermanagement-console">
+        <http:listener xmlns:http="http://www.mulesoft.org/schema/mule/http" config-ref="ordermanagement-httpListenerConfig" path="/console/*" doc:name="HTTP"/>
+        <apikit:console xmlns:apikit="http://www.mulesoft.org/schema/mule/apikit" config-ref="ordermanagement-config" doc:name="APIkit Console"/>
+    </flow>
+    <flow name="get:/getorders:ordermanagement-config">
+        <set-payload value="#[NullPayload.getInstance()]" doc:name="Set Payload"/>
+    </flow>
+    <flow name="post:/createorder:application/json:ordermanagement-config">
+        <set-payload value="#[NullPayload.getInstance()]" doc:name="Set Payload"/>
+    </flow>
+    <apikit:mapping-exception-strategy xmlns:apikit="http://www.mulesoft.org/schema/mule/apikit" name="ordermanagement-apiKitGlobalExceptionMapping">
+        <apikit:mapping statusCode="404">
+            <apikit:exception value="org.mule.module.apikit.exception.NotFoundException" />
+            <set-property propertyName="Content-Type" value="application/json" doc:name="Property"/>
+            <set-payload value="{ &quot;message&quot;: &quot;Resource not found&quot; }" doc:name="Set Payload"/>
+        </apikit:mapping>
+        <apikit:mapping statusCode="405">
+            <apikit:exception value="org.mule.module.apikit.exception.MethodNotAllowedException" />
+            <set-property propertyName="Content-Type" value="application/json" doc:name="Property"/>
+            <set-payload value="{ &quot;message&quot;: &quot;Method not allowed&quot; }" doc:name="Set Payload"/>
+        </apikit:mapping>
+        <apikit:mapping statusCode="415">
+            <apikit:exception value="org.mule.module.apikit.exception.UnsupportedMediaTypeException" />
+            <set-property propertyName="Content-Type" value="application/json" doc:name="Property"/>
+            <set-payload value="{ &quot;message&quot;: &quot;Unsupported media type&quot; }" doc:name="Set Payload"/>
+        </apikit:mapping>
+        <apikit:mapping statusCode="406">
+            <apikit:exception value="org.mule.module.apikit.exception.NotAcceptableException" />
+            <set-property propertyName="Content-Type" value="application/json" doc:name="Property"/>
+            <set-payload value="{ &quot;message&quot;: &quot;Not acceptable&quot; }" doc:name="Set Payload"/>
+        </apikit:mapping>
+        <apikit:mapping statusCode="400">
+            <apikit:exception value="org.mule.module.apikit.exception.BadRequestException" />
+            <set-property propertyName="Content-Type" value="application/json" doc:name="Property"/>
+            <set-payload value="{ &quot;message&quot;: &quot;Bad request&quot; }" doc:name="Set Payload"/>
+        </apikit:mapping>
+    </apikit:mapping-exception-strategy>
+</mule>

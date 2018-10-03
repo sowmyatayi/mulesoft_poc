@@ -1,0 +1,6 @@
+#** GENERATED CONTENT ** Mule Application Deployment Descriptor
+#Wed Sep 26 11:09:31 EDT 2018
+redeployment.enabled=true
+encoding=UTF-8
+config.resources=createUser.xml,oauth2-authorization-code-using-the-http-connector.xml
+domain=default

@@ -1,0 +1,4 @@
+authenticated.users=[{"token"\:"c39f2a5e-3ee2-4cc1-810d-2397d140521e","userId"\:"sowmya_tayi","refreshToken"\:"","baseUrl"\:"https\://anypoint.mulesoft.com/"},{"token"\:"18aa79f8-8bf0-4ca5-9f47-42b6f763541b","userId"\:"sowmyatayi01","refreshToken"\:"","baseUrl"\:"https\://anypoint.mulesoft.com/"}]
+current.token=18aa79f8-8bf0-4ca5-9f47-42b6f763541b
+current.user=sowmyatayi01
+eclipse.preferences.version=1

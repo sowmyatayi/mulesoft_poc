@@ -1,0 +1,26 @@
+{
+	"$schema": "http://mule/poc/customerordermanagement/order#",
+	"properties": {
+		"OrderDetails": {
+			"type": "object",
+			"properties": {
+				"CustomerID": {"type": "string"},
+				"OrderDate": {"type": "string"},
+				"BillingAddress": {	"$ref": "../common/commontypes.json#/definitions/address"},
+				"ShippingAddress": { "$ref": "../common/commontypes.json#/definitions/address"},
+				 "ItemDetails": {
+         			"type": "array",
+          			"items": [{
+              			"type": "object",
+              			"properties": {
+                		"ItemID": {"type": "string"},
+                		"Qty": {"type": "integer"},
+                		"ItemPrice": { "type": "number" },
+                		"Total": { "type": "number" }
+              		},
+              		"required": ["ItemID","Qty","ItemPrice","Total"]
+            	},
+        	}
+		}
+	}
+}

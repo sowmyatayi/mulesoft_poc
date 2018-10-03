@@ -1,0 +1,22 @@
+{
+	"$schema": "http://mule/poc/customerordermanagement/order#",
+	"properties": {
+		"OrderDetails": {
+			"type": "object",
+			"properties": {
+				"OrderId": {"type": "string"},
+				"OrderDate": {"type": "date"},
+				"BillingAddress": {	"$ref": "../common/commontypes.json#/definitions/address"},
+				"ShippingAddress": { "$ref": "../common/commontypes.json#/definitions/address"},
+				"ItemDetails": {
+					"type": "array",
+					"minItems": 1,
+					"maxItems": 0,
+					"items": {
+						"$ref": "../common/commontypes.json#/definitions/Items"
+					}
+				}
+			}
+		}
+	}
+}

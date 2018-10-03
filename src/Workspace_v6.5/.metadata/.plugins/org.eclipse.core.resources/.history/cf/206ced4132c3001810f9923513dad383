@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<mule xmlns:metadata="http://www.mulesoft.org/schema/mule/metadata" xmlns:sfdc="http://www.mulesoft.org/schema/mule/sfdc"
+	xmlns:dw="http://www.mulesoft.org/schema/mule/ee/dw"
+	xmlns="http://www.mulesoft.org/schema/mule/core" xmlns:doc="http://www.mulesoft.org/schema/mule/documentation"
+	xmlns:spring="http://www.springframework.org/schema/beans" 
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.mulesoft.org/schema/mule/sfdc http://www.mulesoft.org/schema/mule/sfdc/current/mule-sfdc.xsd
+http://www.mulesoft.org/schema/mule/ee/dw http://www.mulesoft.org/schema/mule/ee/dw/current/dw.xsd
+http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-current.xsd
+http://www.mulesoft.org/schema/mule/core http://www.mulesoft.org/schema/mule/core/current/mule.xsd">
+<flow name="post:/createuser:createUser-config">
+        <logger message="&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt; Received request #[payload]" level="INFO" doc:name="Logger" />
+        <dw:transform-message doc:name="Transform Message" metadata:id="726ce55f-bf5e-4eae-9ad9-b80c43ce4990">
+            <dw:input-payload mimeType="application/json" />
+            <dw:set-payload><![CDATA[%dw 1.0
+%output application/java
+%namespace ns0 http://www.example.org/AccountDetails
+%namespace ns1 http://www.example.org/CommonTypes
+---
+[{
+	Id: payload.CreateUserRequest.UserDetails.EmailID,
+	IsDeleted: payload.CreateUserRequest.UserDetails.EmailID as :boolean,
+	MasterRecordId: payload.CreateUserRequest.UserDetails.EmailID,
+	Name: payload.CreateUserRequest.UserDetails.EmailID,
+	Type: payload.CreateUserRequest.UserDetails.EmailID,
+	ParentId: payload.CreateUserRequest.UserDetails.EmailID,
+	OwnerId: "0050b0000036DFH",
+	CreatedDate: payload.CreateUserRequest.UserDetails.EmailID as :datetime,
+	CreatedById: payload.CreateUserRequest.UserDetails.EmailID,
+	LastModifiedDate: payload.CreateUserRequest.UserDetails.EmailID as :datetime,
+	LastModifiedById: payload.CreateUserRequest.UserDetails.EmailID,
+	SystemModstamp: payload.CreateUserRequest.UserDetails.EmailID as :datetime,
+	LastActivityDate: payload.CreateUserRequest.UserDetails.EmailID as :date,
+	AccountId: "0010b00002E7FFQ",
+	EffectiveDate: now,
+	Status: "DRAFT",
+	BillingStreet: payload.CreateUserRequest.UserDetails.Address.Line1,
+	BillingCity: payload.CreateUserRequest.UserDetails.Address.City,
+	BillingState: payload.CreateUserRequest.UserDetails.Address.State,
+	BillingPostalCode: payload.CreateUserRequest.UserDetails.Address.Zip,
+	BillingCountry: payload.CreateUserRequest.UserDetails.EmailID,
+	BillingLatitude: payload.CreateUserRequest.UserDetails.EmailID as :number,
+	BillingLongitude: payload.CreateUserRequest.UserDetails.EmailID as :number,
+	BillingGeocodeAccuracy: payload.CreateUserRequest.UserDetails.EmailID,
+	ShippingStreet: payload.CreateUserRequest.UserDetails.Address.Line1,
+	ShippingCity: payload.CreateUserRequest.UserDetails.Address.City,
+	ShippingState: payload.CreateUserRequest.UserDetails.Address.State,
+	ShippingPostalCode: payload.CreateUserRequest.UserDetails.Address.Zip,
+	ShippingCountry: payload.CreateUserRequest.UserDetails.EmailID,
+	ShippingLatitude: payload.CreateUserRequest.UserDetails.EmailID as :number,
+	ShippingLongitude: payload.CreateUserRequest.UserDetails.EmailID as :number,
+	ShippingGeocodeAccuracy: payload.CreateUserRequest.UserDetails.EmailID,
+	Phone: payload.CreateUserRequest.UserDetails.EmailID,
+	Fax: payload.CreateUserRequest.UserDetails.EmailID,
+	AccountNumber: payload.CreateUserRequest.UserDetails.EmailID,
+	Website: payload.CreateUserRequest.UserDetails.EmailID,
+	PhotoUrl: payload.CreateUserRequest.UserDetails.EmailID,
+	Sic: payload.CreateUserRequest.UserDetails.EmailID,
+	Industry: payload.CreateUserRequest.UserDetails.EmailID,
+	AnnualRevenue: payload.CreateUserRequest.UserDetails.EmailID,
+	NumberOfEmployees: payload.CreateUserRequest.UserDetails.EmailID as :number,
+	Ownership: payload.CreateUserRequest.UserDetails.EmailID,
+	TickerSymbol: payload.CreateUserRequest.UserDetails.EmailID,
+	Description: payload.CreateUserRequest.UserDetails.EmailID,
+	Rating: payload.CreateUserRequest.UserDetails.EmailID,
+	Site: payload.CreateUserRequest.UserDetails.EmailID
+}]]]></dw:set-payload>
+        </dw:transform-message>
+        <sfdc:create config-ref="Salesforce__Basic_Authentication" type="Account" doc:name="CreateAccount">
+            <sfdc:objects ref="#[payload]"/>
+        </sfdc:create>
+        <sfdc:create config-ref="Salesforce__Basic_Authentication" type="Order" doc:name="Salesforce">
+            <sfdc:objects ref="#[payload]" />
+        </sfdc:create>
+        <logger message="&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt; Response from saleforce #[payload]" level="INFO" doc:name="Logger" />
+        <dw:transform-message doc:name="Transform Message" metadata:id="15aa3c25-49a5-4856-a055-2da7f3b9a16f">
+            <dw:set-payload><![CDATA[%dw 1.0
+%output application/json
+---
+{
+	UserID: "TEST",
+	Response: "User created"
+}]]></dw:set-payload>
+        </dw:transform-message>
+        <set-payload value="#[payload]" doc:name="Set Payload" />
+    </flow>
+    </mule>

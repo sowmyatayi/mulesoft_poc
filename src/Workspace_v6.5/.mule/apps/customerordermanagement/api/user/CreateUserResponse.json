@@ -1,0 +1,25 @@
+{
+  "$schema": "http://mule/poc/customerordermanagement/createuser",
+  "type": "object",
+  "properties": {
+    "CreateUserResponse": {
+      "type": "object",
+      "properties": {
+	      	"UserName": {
+	      		"type": "string"
+	      		},
+	  		"Status": {
+	  			"type": "string"
+	  			},
+			"StatusMessage": {
+				"type": "string"
+				}
+			}
+		},
+		"required": [
+	            "UserName",
+	            "Status",
+	            "StatusMessage"
+	          ]
+	}
+}

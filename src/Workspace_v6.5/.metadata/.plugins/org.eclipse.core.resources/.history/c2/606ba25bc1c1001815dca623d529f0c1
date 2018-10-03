@@ -1,0 +1,5 @@
+#Wed Sep 26 14:36:21 EDT 2018
+encoding=UTF-8
+domain=default
+redeployment.enabled=true
+config.resources=loginUser.xml,createUser.xml
