@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<schema xmlns="http://www.w3.org/2001/XMLSchema" targetNamespace="http://www.example.org/AccountDetails" xmlns:tns="http://www.example.org/AccountDetails" elementFormDefault="qualified" xmlns:Q1="http://www.example.org/CommonTypes">
+
+   
+    <import schemaLocation="../Common/CommonTypes.xsd" namespace="http://www.example.org/CommonTypes"></import>
+    <element name="AccountDetails" type="Q1:AccountType"></element>
+    <element name="CreateUserRequest" type="tns:CreateUserReqType"></element>
+    
+    <element name="CreateUserResponse" type="tns:CreateUserRespType"></element>
+    
+    <complexType name="CreateUserReqType">
+    	<sequence>
+    		<element name="UserDetails" type="Q1:AccountType"></element>
+    	</sequence>
+    </complexType>
+
+    <complexType name="CreateUserRespType">
+    	<sequence>
+    		<element name="UserID" type="string"></element>
+    		<element name="Response" type="string"></element>
+    	</sequence>
+    </complexType>
+</schema>

@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<schema xmlns="http://www.w3.org/2001/XMLSchema" targetNamespace="http://www.example.org/CustomerDetails" xmlns:tns="http://www.example.org/CustomerDetails" elementFormDefault="qualified" xmlns:Q1="http://www.example.org/CommonTypes">
+ <import schemaLocation="../Common/CommonTypes.xsd" namespace="http://www.example.org/CommonTypes"></import>
+   
+    <element name="CustomerDetails" type="tns:CustomerType"></element>
+
+    <complexType name="CustomerType">
+    	<sequence>
+    		<element name="FirstName" type="string"></element>
+    		<element name="LastName" type="string"></element>
+    		<element name="EmailID" type="string"></element>
+    		<element name="UserID" type="string"></element>
+    		<element name="Password" type="string"></element>
+    		<element name="AddressDetails" type="tns:CustAddressType"
+    			maxOccurs="1" minOccurs="1" />
+    		<element name="PaymentDetails" type="Q1:PaymentMethodType" maxOccurs="unbounded" minOccurs="1"></element>
+    	</sequence>
+    </complexType>
+
+    <complexType name="BillingAddressType"></complexType>
+
+    <complexType name="ShippingAddressType"></complexType>
+
+    <complexType name="CustAddressType">
+    	<sequence>
+    		<element name="Billing" type="tns:BillingAddressType" maxOccurs="unbounded" minOccurs="1"></element>
+    		<element name="Shipping" type="tns:ShippingAddressType" maxOccurs="unbounded" minOccurs="1"></element>
+    	</sequence>
+    </complexType>
+</schema>

@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<schema xmlns="http://www.w3.org/2001/XMLSchema" targetNamespace="http://www.example.org/CommonTypes" xmlns:tns="http://www.example.org/CommonTypes" elementFormDefault="qualified">
+ <complexType name="AccountType">
+    	<sequence>
+    		<element name="UserID" type="string"></element>
+    		<element name="Password" type="string"></element>
+    		<element name="EmailID" type="string"></element>
+    		<element name="Phone" type="string"></element>
+    		<element name="ShippingAddress" type="tns:AddressType"></element>
+    		<element name="BillingAddress" type="tns:AddressType"></element>
+    	</sequence>
+    </complexType>
+
+    <complexType name="AddressType">
+    	<sequence>
+    		<element name="AddressName" type="string"></element>
+    		<element name="Line1" type="string" maxOccurs="1"
+    			minOccurs="1">
+    		</element>
+    		<element name="Line2" type="string" maxOccurs="1"
+    			minOccurs="0">
+    		</element>
+    		<element name="City" type="string" maxOccurs="1"
+    			minOccurs="1">
+    		</element>
+    		<element name="State" type="string" maxOccurs="1"
+    			minOccurs="1">
+    		</element>
+    		<element name="Zip" type="int" maxOccurs="1" minOccurs="1"></element>
+    		<element name="isDefault" type="boolean"></element>
+    	</sequence>
+    </complexType>
+
+
+
+    <complexType name="PaymentMethodType">
+    	<sequence>
+    		<element name="CardDetails" type="tns:CardType" maxOccurs="unbounded" minOccurs="1"></element>
+    	</sequence>
+    </complexType>
+
+    <complexType name="CardType">
+    	<sequence>
+    		<element name="CardType" type="string"></element>
+    		<element name="CardNumber" type="string"></element>
+    		<element name="CardExpiryDate" type="string"></element>
+    		<element name="CardName" type="string"></element>
+    	</sequence>
+   	</complexType>
+</schema>

@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<schema xmlns="http://www.w3.org/2001/XMLSchema" targetNamespace="http://www.example.org/CreateUserRequest" xmlns:tns="http://www.example.org/CreateUserRequest" elementFormDefault="qualified">
+ <import schemaLocation="../Account/AccountDetails.xsd" namespace="http://www.example.org/AccountDetails"></import>
+   
+    
+</schema>

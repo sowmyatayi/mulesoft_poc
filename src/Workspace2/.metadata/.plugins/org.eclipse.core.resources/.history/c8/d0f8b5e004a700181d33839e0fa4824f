@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<schema xmlns="http://www.w3.org/2001/XMLSchema" targetNamespace="http://www.example.org/AccountDetails" xmlns:tns="http://www.example.org/AccountDetails" elementFormDefault="qualified">
+
+    <complexType name="AccountType">
+    	<sequence>
+    		<element name="UserID" type="string"></element>
+    		<element name="Password" type="string"></element>
+    		<element name="EmailID" type="string"></element>
+    		<element name="Phone" type="string"></element>
+    		<element name="Addresses" type="string"></element>
+    	</sequence>
+    </complexType>
+
+    <complexType name="AddressType">
+    	<sequence>
+    		<element name="AddressName" type="string"></element>
+    		<element name="isDefaultShipping" type="boolean"></element>
+    	</sequence>
+    </complexType>
+</schema>

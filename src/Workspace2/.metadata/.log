@@ -1,0 +1,1151 @@
+!SESSION 2018-08-28 14:25:26.989 -----------------------------------------------
+eclipse.buildId=unknown
+java.version=1.8.0_181
+java.vendor=Oracle Corporation
+BootLoader constants: OS=win32, ARCH=x86_64, WS=win32, NL=en_US
+Command-line arguments:  -os win32 -ws win32 -arch x86_64
+
+This is a continuation of log file C:\MyPOCs\Mulesoft_Work\Workspace2\.metadata\.bak_0.log
+Created Time: 2018-08-28 14:28:38.914
+
+!ENTRY org.mule.tooling.core 4 0 2018-08-28 14:28:38.917
+!MESSAGE Error while doing connectivity test
+!STACK 0
+org.mule.tooling.client.api.exception.DeploymentException: Couldn't deploy the application
+org.mule.tooling.agent.rest.client.exceptions.ToolingServiceAPIException: HTTP 502 cannotconnect. <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html>
+<!-- FileName: index.html
+     Language: [en]
+-->
+<!--Head-->
+<head>
+  <meta content="text/html; charset=UTF-8" http-equiv="Content-Type" />
+  <meta http-equiv="X-UA-Compatible" content="IE=7" />
+  <title>McAfee Web Gateway - Notification</title>
+  <script src="/mwg-internal/de5fs23hu73ds/files/javascript/sw.js" type="text/javascript" ></script>
+  <script src="/mwg-internal/de5fs23hu73ds/files/default/geolocation.js" type="text/javascript" ></script>
+  <link rel="stylesheet" href="/mwg-internal/de5fs23hu73ds/files/default/stylesheet.css" />
+</head>
+<!--/Head-->
+<!--Body-->
+<body onload="swOnLoad();">
+  <table class='bodyTable'>
+    <tr>
+      <td class='bodyData' background='/mwg-internal/de5fs23hu73ds/files/default/img/bg_body.gif'>
+<!--Logo-->
+<table class='logoTable'>
+  <tr>
+    <td class='logoData'>
+     <img class="left"
+src="/mwg-internal/de5fs23hu73ds/files/default/img/fedex.gif"><td>  </td>
+<img class="right"
+src="/mwg-internal/de5fs23hu73ds/files/default/img/InfoSec_logo_200px.jpg"
+width="200"><br></td>
+  </tr>
+</table>
+<!--/Logo-->
+<!--Contents-->
+<!-- FileName: cannotconnect.html
+     Language: [en]
+-->
+<!--Title-->
+<table class='titleTable' background='/mwg-internal/de5fs23hu73ds/files/default/img/bg_navbar.jpg'>
+  <tr>
+    <td class='titleData'>
+      Cannot Connect.
+    </td>
+  </tr>
+</table>
+<!--/Title-->
+
+<!--Content-->
+<table class="contentTable">
+  <tr>
+    <td class="contentData">
+      The Proxy received an invalid response.
+    </td>
+  </tr>
+</table>
+<!--/Content-->
+
+<!--Info-->
+<table class="infoTable">
+  <tr>
+    <td class="infoData">
+      <b>URL: </b>http://127.0.0.1:57538/mule/tooling/applications?verbose=true<br />
+    </td>
+  </tr>
+</table>
+<!--/Info-->
+
+<!--/Contents-->
+<!--Policy-->
+<table class='policyTable'>
+  <tr>
+    <td class='policyHeading'>
+  
+</table>
+<!--/Policy-->
+<!--Foot-->
+<table class='footTable'>
+  <tr>
+    
+    </td>
+  </tr>
+  <tr>
+    <td class='footData'>
+      generated <span id="time">2018-08-28 18:28:38</span> by mwg-w21
+      <br />
+      Jersey/2.17 (HttpUrlConnection 1.8.0_181)<br/>
+      Rules.CurrentRule.Name: Passed all checks
+    </td>
+  </tr>
+</table>
+<!--/Foot-->
+      </td>
+    </tr>
+  </table>
+</body>
+<!--/Body-->
+</html>
+<!--
+Rules.CurrentRuleSet.Name: Passed all checks
+Rules.CurrentRule.Name: Passed all checks
+Authentication.IsAuthenticated: false
+Authentication.Failed: false
+Authentication.UserName: 
+Authentication.Realm: 
+Authentication.Attributes: 
+
+-->
+	at org.mule.tooling.agent.rest.client.exceptions.ToolingServiceAPIException.newToolingServiceAPIException(ToolingServiceAPIException.java:84)
+	at org.mule.tooling.agent.rest.client.exceptions.ToolingServiceAPIException.newToolingServiceAPIException(ToolingServiceAPIException.java:67)
+	at org.mule.tooling.agent.rest.client.tooling.applications.Applications.put(Applications.java:99)
+	at org.mule.tooling.agent.rest.client.RestAgentToolingService.lambda$deployApplication$3(RestAgentToolingService.java:166)
+	at org.mule.tooling.agent.rest.client.service.ServiceFunction.serviceCallWrapper(ServiceFunction.java:27)
+	at org.mule.tooling.agent.rest.client.RestAgentToolingService.deployApplication(RestAgentToolingService.java:165)
+	at org.mule.tooling.agent.RuntimeToolingService.deployApplication(RuntimeToolingService.java:92)
+	at org.mule.tooling.client.internal.application.FileSystemArtifactDeployer.lambda$new$2(FileSystemArtifactDeployer.java:51)
+	at org.mule.tooling.client.internal.application.FileSystemArtifactDeployer.doInternalDeploy(FileSystemArtifactDeployer.java:67)
+	at org.mule.tooling.client.internal.application.AbstractArtifactDeployer.deploy(AbstractArtifactDeployer.java:52)
+	at org.mule.tooling.client.internal.application.DefaultApplication.evaluateWithRemoteApplication(DefaultApplication.java:100)
+	at org.mule.tooling.client.internal.ApplicationConnectivityTestingService.doTestConnection(ApplicationConnectivityTestingService.java:45)
+	at org.mule.tooling.client.internal.AbstractConnectivityTestingService.testConnection(AbstractConnectivityTestingService.java:44)
+	at org.mule.tooling.client.internal.AbstractConnectivityTestingService.invokeMethod(AbstractConnectivityTestingService.java:57)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.lang.reflect.Method.invoke(Method.java:498)
+	at org.mule.tooling.client.bootstrap.internal.reflection.Dispatcher$ToolingCallable.call(Dispatcher.java:223)
+	at java.util.concurrent.FutureTask.run(FutureTask.java:266)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1149)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:624)
+	at java.lang.Thread.run(Thread.java:748)
+
+	at org.mule.tooling.agent.rest.client.RestAgentToolingService.deployApplication(RestAgentToolingService.java:175)
+	at org.mule.tooling.agent.RuntimeToolingService.deployApplication(RuntimeToolingService.java:92)
+	at org.mule.tooling.client.internal.application.FileSystemArtifactDeployer.lambda$new$2(FileSystemArtifactDeployer.java:51)
+	at org.mule.tooling.client.internal.application.FileSystemArtifactDeployer.doInternalDeploy(FileSystemArtifactDeployer.java:67)
+	at org.mule.tooling.client.internal.application.AbstractArtifactDeployer.deploy(AbstractArtifactDeployer.java:52)
+	at org.mule.tooling.client.internal.application.DefaultApplication.evaluateWithRemoteApplication(DefaultApplication.java:100)
+	at org.mule.tooling.client.internal.ApplicationConnectivityTestingService.doTestConnection(ApplicationConnectivityTestingService.java:45)
+	at org.mule.tooling.client.internal.AbstractConnectivityTestingService.testConnection(AbstractConnectivityTestingService.java:44)
+	at org.mule.tooling.client.internal.AbstractConnectivityTestingService.invokeMethod(AbstractConnectivityTestingService.java:57)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.lang.reflect.Method.invoke(Method.java:498)
+	at org.mule.tooling.client.bootstrap.internal.reflection.Dispatcher$ToolingCallable.call(Dispatcher.java:223)
+	at java.util.concurrent.FutureTask.run(FutureTask.java:266)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1149)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:624)
+	at java.lang.Thread.run(Thread.java:748)
+
+!ENTRY org.mule.tooling.core 1 0 2018-08-28 14:28:50.143
+!MESSAGE Number of server definitions: 1
+
+!ENTRY org.mule.tooling.core 1 0 2018-08-28 14:28:51.832
+!MESSAGE Instance C:\MyPOCs\Mulesoft_Work\AnypointStudio\configuration\org.eclipse.osgi\424\data\.runtimes\tooling-eiag8gfi was not deleted
+
+!ENTRY org.mule.tooling.core 1 0 2018-08-28 14:28:51.832
+!MESSAGE Creating tooling instance
+
+!ENTRY org.mule.tooling.core 1 0 2018-08-28 14:28:51.848
+!MESSAGE Copying mule instance as tooling instance
+
+!ENTRY org.mule.tooling.core 1 0 2018-08-28 14:29:07.403
+!MESSAGE Tooling path: C:\MyPOCs\Mulesoft_Work\AnypointStudio\configuration\org.eclipse.osgi\424\data\.runtimes\tooling-ibfiluks
+
+!ENTRY org.mule.tooling.core 1 0 2018-08-28 14:29:07.403
+!MESSAGE Tooling version: 4.1.3
+
+!ENTRY org.mule.tooling.core 1 0 2018-08-28 14:29:07.403
+!MESSAGE Starting tooling instance
+
+!ENTRY org.mule.tooling.core 1 0 2018-08-28 14:29:07.403
+!MESSAGE Tooling startup timeout: 90s
+
+!ENTRY org.mule.tooling.core 1 0 2018-08-28 14:29:09.359
+!MESSAGE Tooling up and running
+
+!ENTRY org.mule.tooling.core 4 0 2018-08-28 14:29:16.529
+!MESSAGE Error while doing connectivity test
+!STACK 0
+org.mule.tooling.client.api.exception.DeploymentException: Couldn't deploy the application
+org.mule.tooling.agent.rest.client.exceptions.ToolingServiceAPIException: HTTP 502 cannotconnect. <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html>
+<!-- FileName: index.html
+     Language: [en]
+-->
+<!--Head-->
+<head>
+  <meta content="text/html; charset=UTF-8" http-equiv="Content-Type" />
+  <meta http-equiv="X-UA-Compatible" content="IE=7" />
+  <title>McAfee Web Gateway - Notification</title>
+  <script src="/mwg-internal/de5fs23hu73ds/files/javascript/sw.js" type="text/javascript" ></script>
+  <script src="/mwg-internal/de5fs23hu73ds/files/default/geolocation.js" type="text/javascript" ></script>
+  <link rel="stylesheet" href="/mwg-internal/de5fs23hu73ds/files/default/stylesheet.css" />
+</head>
+<!--/Head-->
+<!--Body-->
+<body onload="swOnLoad();">
+  <table class='bodyTable'>
+    <tr>
+      <td class='bodyData' background='/mwg-internal/de5fs23hu73ds/files/default/img/bg_body.gif'>
+<!--Logo-->
+<table class='logoTable'>
+  <tr>
+    <td class='logoData'>
+     <img class="left"
+src="/mwg-internal/de5fs23hu73ds/files/default/img/fedex.gif"><td>  </td>
+<img class="right"
+src="/mwg-internal/de5fs23hu73ds/files/default/img/InfoSec_logo_200px.jpg"
+width="200"><br></td>
+  </tr>
+</table>
+<!--/Logo-->
+<!--Contents-->
+<!-- FileName: cannotconnect.html
+     Language: [en]
+-->
+<!--Title-->
+<table class='titleTable' background='/mwg-internal/de5fs23hu73ds/files/default/img/bg_navbar.jpg'>
+  <tr>
+    <td class='titleData'>
+      Cannot Connect.
+    </td>
+  </tr>
+</table>
+<!--/Title-->
+
+<!--Content-->
+<table class="contentTable">
+  <tr>
+    <td class="contentData">
+      The Proxy received an invalid response.
+    </td>
+  </tr>
+</table>
+<!--/Content-->
+
+<!--Info-->
+<table class="infoTable">
+  <tr>
+    <td class="infoData">
+      <b>URL: </b>http://127.0.0.1:57605/mule/tooling/applications?verbose=true<br />
+    </td>
+  </tr>
+</table>
+<!--/Info-->
+
+<!--/Contents-->
+<!--Policy-->
+<table class='policyTable'>
+  <tr>
+    <td class='policyHeading'>
+  
+</table>
+<!--/Policy-->
+<!--Foot-->
+<table class='footTable'>
+  <tr>
+    
+    </td>
+  </tr>
+  <tr>
+    <td class='footData'>
+      generated <span id="time">2018-08-28 18:29:16</span> by mwg-w21
+      <br />
+      Jersey/2.17 (HttpUrlConnection 1.8.0_181)<br/>
+      Rules.CurrentRule.Name: Passed all checks
+    </td>
+  </tr>
+</table>
+<!--/Foot-->
+      </td>
+    </tr>
+  </table>
+</body>
+<!--/Body-->
+</html>
+<!--
+Rules.CurrentRuleSet.Name: Passed all checks
+Rules.CurrentRule.Name: Passed all checks
+Authentication.IsAuthenticated: false
+Authentication.Failed: false
+Authentication.UserName: 
+Authentication.Realm: 
+Authentication.Attributes: 
+
+-->
+	at org.mule.tooling.agent.rest.client.exceptions.ToolingServiceAPIException.newToolingServiceAPIException(ToolingServiceAPIException.java:84)
+	at org.mule.tooling.agent.rest.client.exceptions.ToolingServiceAPIException.newToolingServiceAPIException(ToolingServiceAPIException.java:67)
+	at org.mule.tooling.agent.rest.client.tooling.applications.Applications.put(Applications.java:99)
+	at org.mule.tooling.agent.rest.client.RestAgentToolingService.lambda$deployApplication$3(RestAgentToolingService.java:166)
+	at org.mule.tooling.agent.rest.client.service.ServiceFunction.serviceCallWrapper(ServiceFunction.java:27)
+	at org.mule.tooling.agent.rest.client.RestAgentToolingService.deployApplication(RestAgentToolingService.java:165)
+	at org.mule.tooling.agent.RuntimeToolingService.deployApplication(RuntimeToolingService.java:92)
+	at org.mule.tooling.client.internal.application.FileSystemArtifactDeployer.lambda$new$2(FileSystemArtifactDeployer.java:51)
+	at org.mule.tooling.client.internal.application.FileSystemArtifactDeployer.doInternalDeploy(FileSystemArtifactDeployer.java:67)
+	at org.mule.tooling.client.internal.application.AbstractArtifactDeployer.deploy(AbstractArtifactDeployer.java:52)
+	at org.mule.tooling.client.internal.application.DefaultApplication.evaluateWithRemoteApplication(DefaultApplication.java:100)
+	at org.mule.tooling.client.internal.ApplicationConnectivityTestingService.doTestConnection(ApplicationConnectivityTestingService.java:45)
+	at org.mule.tooling.client.internal.AbstractConnectivityTestingService.testConnection(AbstractConnectivityTestingService.java:44)
+	at org.mule.tooling.client.internal.AbstractConnectivityTestingService.invokeMethod(AbstractConnectivityTestingService.java:57)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.lang.reflect.Method.invoke(Method.java:498)
+	at org.mule.tooling.client.bootstrap.internal.reflection.Dispatcher$ToolingCallable.call(Dispatcher.java:223)
+	at java.util.concurrent.FutureTask.run(FutureTask.java:266)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1149)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:624)
+	at java.lang.Thread.run(Thread.java:748)
+
+	at org.mule.tooling.agent.rest.client.RestAgentToolingService.deployApplication(RestAgentToolingService.java:175)
+	at org.mule.tooling.agent.RuntimeToolingService.deployApplication(RuntimeToolingService.java:92)
+	at org.mule.tooling.client.internal.application.FileSystemArtifactDeployer.lambda$new$2(FileSystemArtifactDeployer.java:51)
+	at org.mule.tooling.client.internal.application.FileSystemArtifactDeployer.doInternalDeploy(FileSystemArtifactDeployer.java:67)
+	at org.mule.tooling.client.internal.application.AbstractArtifactDeployer.deploy(AbstractArtifactDeployer.java:52)
+	at org.mule.tooling.client.internal.application.DefaultApplication.evaluateWithRemoteApplication(DefaultApplication.java:100)
+	at org.mule.tooling.client.internal.ApplicationConnectivityTestingService.doTestConnection(ApplicationConnectivityTestingService.java:45)
+	at org.mule.tooling.client.internal.AbstractConnectivityTestingService.testConnection(AbstractConnectivityTestingService.java:44)
+	at org.mule.tooling.client.internal.AbstractConnectivityTestingService.invokeMethod(AbstractConnectivityTestingService.java:57)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.lang.reflect.Method.invoke(Method.java:498)
+	at org.mule.tooling.client.bootstrap.internal.reflection.Dispatcher$ToolingCallable.call(Dispatcher.java:223)
+	at java.util.concurrent.FutureTask.run(FutureTask.java:266)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1149)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:624)
+	at java.lang.Thread.run(Thread.java:748)
+
+!ENTRY org.mule.tooling.core 4 0 2018-08-28 14:30:32.991
+!MESSAGE Error while doing connectivity test
+!STACK 0
+org.mule.tooling.client.api.exception.DeploymentException: Couldn't deploy the application
+org.mule.tooling.agent.rest.client.exceptions.ToolingServiceAPIException: HTTP 502 cannotconnect. <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html>
+<!-- FileName: index.html
+     Language: [en]
+-->
+<!--Head-->
+<head>
+  <meta content="text/html; charset=UTF-8" http-equiv="Content-Type" />
+  <meta http-equiv="X-UA-Compatible" content="IE=7" />
+  <title>McAfee Web Gateway - Notification</title>
+  <script src="/mwg-internal/de5fs23hu73ds/files/javascript/sw.js" type="text/javascript" ></script>
+  <script src="/mwg-internal/de5fs23hu73ds/files/default/geolocation.js" type="text/javascript" ></script>
+  <link rel="stylesheet" href="/mwg-internal/de5fs23hu73ds/files/default/stylesheet.css" />
+</head>
+<!--/Head-->
+<!--Body-->
+<body onload="swOnLoad();">
+  <table class='bodyTable'>
+    <tr>
+      <td class='bodyData' background='/mwg-internal/de5fs23hu73ds/files/default/img/bg_body.gif'>
+<!--Logo-->
+<table class='logoTable'>
+  <tr>
+    <td class='logoData'>
+     <img class="left"
+src="/mwg-internal/de5fs23hu73ds/files/default/img/fedex.gif"><td>  </td>
+<img class="right"
+src="/mwg-internal/de5fs23hu73ds/files/default/img/InfoSec_logo_200px.jpg"
+width="200"><br></td>
+  </tr>
+</table>
+<!--/Logo-->
+<!--Contents-->
+<!-- FileName: cannotconnect.html
+     Language: [en]
+-->
+<!--Title-->
+<table class='titleTable' background='/mwg-internal/de5fs23hu73ds/files/default/img/bg_navbar.jpg'>
+  <tr>
+    <td class='titleData'>
+      Cannot Connect.
+    </td>
+  </tr>
+</table>
+<!--/Title-->
+
+<!--Content-->
+<table class="contentTable">
+  <tr>
+    <td class="contentData">
+      The Proxy received an invalid response.
+    </td>
+  </tr>
+</table>
+<!--/Content-->
+
+<!--Info-->
+<table class="infoTable">
+  <tr>
+    <td class="infoData">
+      <b>URL: </b>http://127.0.0.1:57605/mule/tooling/applications?verbose=true<br />
+    </td>
+  </tr>
+</table>
+<!--/Info-->
+
+<!--/Contents-->
+<!--Policy-->
+<table class='policyTable'>
+  <tr>
+    <td class='policyHeading'>
+  
+</table>
+<!--/Policy-->
+<!--Foot-->
+<table class='footTable'>
+  <tr>
+    
+    </td>
+  </tr>
+  <tr>
+    <td class='footData'>
+      generated <span id="time">2018-08-28 18:30:32</span> by mwg-w21
+      <br />
+      Jersey/2.17 (HttpUrlConnection 1.8.0_181)<br/>
+      Rules.CurrentRule.Name: Passed all checks
+    </td>
+  </tr>
+</table>
+<!--/Foot-->
+      </td>
+    </tr>
+  </table>
+</body>
+<!--/Body-->
+</html>
+<!--
+Rules.CurrentRuleSet.Name: Passed all checks
+Rules.CurrentRule.Name: Passed all checks
+Authentication.IsAuthenticated: false
+Authentication.Failed: false
+Authentication.UserName: 
+Authentication.Realm: 
+Authentication.Attributes: 
+
+-->
+	at org.mule.tooling.agent.rest.client.exceptions.ToolingServiceAPIException.newToolingServiceAPIException(ToolingServiceAPIException.java:84)
+	at org.mule.tooling.agent.rest.client.exceptions.ToolingServiceAPIException.newToolingServiceAPIException(ToolingServiceAPIException.java:67)
+	at org.mule.tooling.agent.rest.client.tooling.applications.Applications.put(Applications.java:99)
+	at org.mule.tooling.agent.rest.client.RestAgentToolingService.lambda$deployApplication$3(RestAgentToolingService.java:166)
+	at org.mule.tooling.agent.rest.client.service.ServiceFunction.serviceCallWrapper(ServiceFunction.java:27)
+	at org.mule.tooling.agent.rest.client.RestAgentToolingService.deployApplication(RestAgentToolingService.java:165)
+	at org.mule.tooling.agent.RuntimeToolingService.deployApplication(RuntimeToolingService.java:92)
+	at org.mule.tooling.client.internal.application.FileSystemArtifactDeployer.lambda$new$2(FileSystemArtifactDeployer.java:51)
+	at org.mule.tooling.client.internal.application.FileSystemArtifactDeployer.doInternalDeploy(FileSystemArtifactDeployer.java:67)
+	at org.mule.tooling.client.internal.application.AbstractArtifactDeployer.deploy(AbstractArtifactDeployer.java:52)
+	at org.mule.tooling.client.internal.application.DefaultApplication.evaluateWithRemoteApplication(DefaultApplication.java:100)
+	at org.mule.tooling.client.internal.ApplicationConnectivityTestingService.doTestConnection(ApplicationConnectivityTestingService.java:45)
+	at org.mule.tooling.client.internal.AbstractConnectivityTestingService.testConnection(AbstractConnectivityTestingService.java:44)
+	at org.mule.tooling.client.internal.AbstractConnectivityTestingService.invokeMethod(AbstractConnectivityTestingService.java:57)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.lang.reflect.Method.invoke(Method.java:498)
+	at org.mule.tooling.client.bootstrap.internal.reflection.Dispatcher$ToolingCallable.call(Dispatcher.java:223)
+	at java.util.concurrent.FutureTask.run(FutureTask.java:266)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1149)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:624)
+	at java.lang.Thread.run(Thread.java:748)
+
+	at org.mule.tooling.agent.rest.client.RestAgentToolingService.deployApplication(RestAgentToolingService.java:175)
+	at org.mule.tooling.agent.RuntimeToolingService.deployApplication(RuntimeToolingService.java:92)
+	at org.mule.tooling.client.internal.application.FileSystemArtifactDeployer.lambda$new$2(FileSystemArtifactDeployer.java:51)
+	at org.mule.tooling.client.internal.application.FileSystemArtifactDeployer.doInternalDeploy(FileSystemArtifactDeployer.java:67)
+	at org.mule.tooling.client.internal.application.AbstractArtifactDeployer.deploy(AbstractArtifactDeployer.java:52)
+	at org.mule.tooling.client.internal.application.DefaultApplication.evaluateWithRemoteApplication(DefaultApplication.java:100)
+	at org.mule.tooling.client.internal.ApplicationConnectivityTestingService.doTestConnection(ApplicationConnectivityTestingService.java:45)
+	at org.mule.tooling.client.internal.AbstractConnectivityTestingService.testConnection(AbstractConnectivityTestingService.java:44)
+	at org.mule.tooling.client.internal.AbstractConnectivityTestingService.invokeMethod(AbstractConnectivityTestingService.java:57)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.lang.reflect.Method.invoke(Method.java:498)
+	at org.mule.tooling.client.bootstrap.internal.reflection.Dispatcher$ToolingCallable.call(Dispatcher.java:223)
+	at java.util.concurrent.FutureTask.run(FutureTask.java:266)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1149)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:624)
+	at java.lang.Thread.run(Thread.java:748)
+
+!ENTRY org.mule.tooling.core 1 0 2018-08-28 14:32:06.076
+!MESSAGE Number of server definitions: 1
+
+!ENTRY org.mule.tooling.core 1 0 2018-08-28 14:32:06.077
+!MESSAGE Metadata was not read from C:\MyPOCs\Mulesoft_Work\AnypointStudio\configuration\org.eclipse.osgi\424\data\.runtimes\tooling-eiag8gfi
+
+!ENTRY org.mule.tooling.core 1 0 2018-08-28 14:32:07.677
+!MESSAGE Instance C:\MyPOCs\Mulesoft_Work\AnypointStudio\configuration\org.eclipse.osgi\424\data\.runtimes\tooling-ibfiluks was not deleted
+
+!ENTRY org.mule.tooling.core 1 0 2018-08-28 14:32:07.692
+!MESSAGE Creating tooling instance
+
+!ENTRY org.mule.tooling.core 1 0 2018-08-28 14:32:07.699
+!MESSAGE Copying mule instance as tooling instance
+
+!ENTRY org.mule.tooling.core 1 0 2018-08-28 14:32:13.803
+!MESSAGE Tooling path: C:\MyPOCs\Mulesoft_Work\AnypointStudio\configuration\org.eclipse.osgi\424\data\.runtimes\tooling-uhbz3ynf
+
+!ENTRY org.mule.tooling.core 1 0 2018-08-28 14:32:13.830
+!MESSAGE Tooling version: 4.1.3
+
+!ENTRY org.mule.tooling.core 1 0 2018-08-28 14:32:13.841
+!MESSAGE Starting tooling instance
+
+!ENTRY org.mule.tooling.core 1 0 2018-08-28 14:32:13.842
+!MESSAGE Tooling startup timeout: 90s
+
+!ENTRY org.mule.tooling.ui.contribution.munit 1 1 2018-08-28 14:32:15.269
+!MESSAGE Deleting MUnit temporary folder in C:\Users\3644692\AppData\Local\Temp\munit-temp-dir
+
+!ENTRY org.mule.tooling.analytics 1 0 2018-08-28 14:32:15.281
+!MESSAGE Analytics shutdown successfully
+!SESSION 2018-08-28 14:32:27.704 -----------------------------------------------
+eclipse.buildId=unknown
+java.version=1.8.0_181
+java.vendor=Oracle Corporation
+BootLoader constants: OS=win32, ARCH=x86_64, WS=win32, NL=en_US
+Command-line arguments:  -os win32 -ws win32 -arch x86_64
+
+!ENTRY org.mule.tooling.core 1 0 2018-08-28 14:32:36.507
+!MESSAGE Using extension model cache located at: C:\MyPOCs\Mulesoft_Work\Workspace2\.mule\plugins-tmp\repository
+
+!ENTRY org.mule.tooling.ui.contribution.munit 1 1 2018-08-28 14:32:40.436
+!MESSAGE Creating MUnit temporary folder in C:\Users\3644692\AppData\Local\Temp\munit-temp-dir
+
+!ENTRY org.mule.tooling.analytics 1 0 2018-08-28 14:33:08.374
+!MESSAGE Analytics starts successfully
+
+!ENTRY org.mule.tooling.core 1 0 2018-08-28 14:33:08.467
+!MESSAGE Number of server definitions: 1
+
+!ENTRY org.mule.tooling.core 1 0 2018-08-28 14:33:08.483
+!MESSAGE Metadata was not read from C:\MyPOCs\Mulesoft_Work\AnypointStudio\configuration\org.eclipse.osgi\424\data\.runtimes\tooling-ibfiluks
+
+!ENTRY org.mule.tooling.core 1 0 2018-08-28 14:33:20.397
+!MESSAGE Creating tooling instance
+
+!ENTRY org.mule.tooling.core 1 0 2018-08-28 14:33:20.470
+!MESSAGE Copying mule instance as tooling instance
+
+!ENTRY org.mule.tooling.core 1 0 2018-08-28 14:33:32.498
+!MESSAGE Tooling path: C:\MyPOCs\Mulesoft_Work\AnypointStudio\configuration\org.eclipse.osgi\424\data\.runtimes\tooling-aabcz9mz
+
+!ENTRY org.mule.tooling.core 1 0 2018-08-28 14:33:32.500
+!MESSAGE Tooling version: 4.1.3
+
+!ENTRY org.mule.tooling.core 1 0 2018-08-28 14:33:32.502
+!MESSAGE Starting tooling instance
+
+!ENTRY org.mule.tooling.core 1 0 2018-08-28 14:33:32.506
+!MESSAGE Tooling startup timeout: 90s
+
+!ENTRY org.mule.tooling.core 1 0 2018-08-28 14:33:36.986
+!MESSAGE Tooling up and running
+
+!ENTRY org.eclipse.jface 2 0 2018-08-28 14:33:58.988
+!MESSAGE Keybinding conflicts occurred.  They may interfere with normal accelerator operation.
+!SUBENTRY 1 org.eclipse.jface 2 0 2018-08-28 14:33:58.988
+!MESSAGE A conflict occurred for CTRL+F:
+Binding(CTRL+F,
+	ParameterizedCommand(Command(org.eclipse.ui.edit.findReplace,Find and Replace,
+		Find and replace text,
+		Category(org.eclipse.ui.category.edit,Edit,null,true),
+		org.eclipse.ui.internal.WorkbenchHandlerServiceHandler@2b4727e4,
+		,,true),null),
+	org.eclipse.ui.defaultAcceleratorConfiguration,
+	org.eclipse.ui.contexts.window,,,system)
+Binding(CTRL+F,
+	ParameterizedCommand(Command(org.mule.tooling.ui.dfl.contribution.commands.searchCommand,Find/Replace,
+		Find/Replace,
+		Category(org.mule.tooling.ui.commandcategory,org.mule.tooling.ui.commandcategory,Category for menu commands,true),
+		org.eclipse.ui.internal.WorkbenchHandlerServiceHandler@14170abd,
+		,,true),null),
+	org.eclipse.ui.defaultAcceleratorConfiguration,
+	org.mule.tooling.contexts.mulePropertiesEditor,,,system)
+Binding(CTRL+F,
+	ParameterizedCommand(Command(org.mule.tooling.commands.focusSearchCommand,Focus Search Command,
+		Focus Search in Palette,
+		Category(org.mule.tooling.ui.commandcategory,org.mule.tooling.ui.commandcategory,Category for menu commands,true),
+		org.eclipse.ui.internal.WorkbenchHandlerServiceHandler@5c2086b4,
+		,,true),null),
+	org.eclipse.ui.defaultAcceleratorConfiguration,
+	org.mule.tooling.contexts.mulePropertiesEditor,,,system)
+
+!ENTRY org.mule.tooling.maven 1 0 2018-08-28 14:34:24.618
+!MESSAGE  *** 28447 EmbeddedMavenRunner [configuration=DefaultMavenRunnerConfiguration [externalInstallation=false, mavenInstallationHome=null, mavenOpts=]]
+
+!ENTRY org.mule.tooling.core 4 0 2018-08-28 14:34:58.507
+!MESSAGE Error while doing connectivity test
+!STACK 0
+org.mule.tooling.client.api.exception.DeploymentException: Couldn't deploy the application
+org.mule.tooling.agent.rest.client.exceptions.ToolingServiceAPIException: HTTP 502 cannotconnect. <html>
+<!-- FileName: index.html
+     Language: [en]
+-->
+<!--Head-->
+<head>
+  <meta http-equiv="X-UA-Compatible" content="IE=7" />
+<link rel="stylesheet" media="screen" href="/mwg-internal/de5fs23hu73ds/files/default/layout.css" type="text/css"> 
+ <link rel="stylesheet" media="screen" href="/mwg-internal/de5fs23hu73ds/files/default/present.css" type="text/css">
+<!--Contents-->
+<html>
+<head>
+  <meta http-equiv="X-UA-Compatible" content="IE=7" />
+<meta content="text/html; charset=ISO-8859-1"
+http-equiv="Content-Type">
+<title></title>
+</head>
+<body>
+<br>
+<big style="font-weight: bold;"><big><big>The server is down or
+refusing connections</big></big></big><br>
+<hr style="width: 100%; height: 2px;"><br>
+&nbsp;<br>
+Most likely causes:<br>
+<br>
+&nbsp;&nbsp;&nbsp; * There might be a typing error in the address.<br>
+&nbsp;&nbsp;&nbsp; * The server you are trying to access is down or
+unavailable.<br>
+&nbsp;&nbsp;&nbsp; * If you clicked on a link, it may be out of date.<br>
+<br>
+What you can try:<br>
+<br>
+&nbsp;&nbsp;&nbsp; * Retype the address.<br>
+&nbsp;&nbsp;&nbsp; * Wait and try again later.<br>
+&nbsp;&nbsp;&nbsp; * Go back to the previous page.<br>
+<hr style="width: 100%; height: 2px;"><br>
+</body>
+</html>
+
+
+<!--/Contents-->
+
+</body>
+<!--/Body-->
+</html>
+
+
+	at org.mule.tooling.agent.rest.client.exceptions.ToolingServiceAPIException.newToolingServiceAPIException(ToolingServiceAPIException.java:84)
+	at org.mule.tooling.agent.rest.client.exceptions.ToolingServiceAPIException.newToolingServiceAPIException(ToolingServiceAPIException.java:67)
+	at org.mule.tooling.agent.rest.client.tooling.applications.Applications.put(Applications.java:99)
+	at org.mule.tooling.agent.rest.client.RestAgentToolingService.lambda$deployApplication$3(RestAgentToolingService.java:166)
+	at org.mule.tooling.agent.rest.client.service.ServiceFunction.serviceCallWrapper(ServiceFunction.java:27)
+	at org.mule.tooling.agent.rest.client.RestAgentToolingService.deployApplication(RestAgentToolingService.java:165)
+	at org.mule.tooling.agent.RuntimeToolingService.deployApplication(RuntimeToolingService.java:92)
+	at org.mule.tooling.client.internal.application.FileSystemArtifactDeployer.lambda$new$2(FileSystemArtifactDeployer.java:51)
+	at org.mule.tooling.client.internal.application.FileSystemArtifactDeployer.doInternalDeploy(FileSystemArtifactDeployer.java:67)
+	at org.mule.tooling.client.internal.application.AbstractArtifactDeployer.deploy(AbstractArtifactDeployer.java:52)
+	at org.mule.tooling.client.internal.application.DefaultApplication.evaluateWithRemoteApplication(DefaultApplication.java:100)
+	at org.mule.tooling.client.internal.ApplicationConnectivityTestingService.doTestConnection(ApplicationConnectivityTestingService.java:45)
+	at org.mule.tooling.client.internal.AbstractConnectivityTestingService.testConnection(AbstractConnectivityTestingService.java:44)
+	at org.mule.tooling.client.internal.AbstractConnectivityTestingService.invokeMethod(AbstractConnectivityTestingService.java:57)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.lang.reflect.Method.invoke(Method.java:498)
+	at org.mule.tooling.client.bootstrap.internal.reflection.Dispatcher$ToolingCallable.call(Dispatcher.java:223)
+	at java.util.concurrent.FutureTask.run(FutureTask.java:266)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1149)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:624)
+	at java.lang.Thread.run(Thread.java:748)
+
+	at org.mule.tooling.agent.rest.client.RestAgentToolingService.deployApplication(RestAgentToolingService.java:175)
+	at org.mule.tooling.agent.RuntimeToolingService.deployApplication(RuntimeToolingService.java:92)
+	at org.mule.tooling.client.internal.application.FileSystemArtifactDeployer.lambda$new$2(FileSystemArtifactDeployer.java:51)
+	at org.mule.tooling.client.internal.application.FileSystemArtifactDeployer.doInternalDeploy(FileSystemArtifactDeployer.java:67)
+	at org.mule.tooling.client.internal.application.AbstractArtifactDeployer.deploy(AbstractArtifactDeployer.java:52)
+	at org.mule.tooling.client.internal.application.DefaultApplication.evaluateWithRemoteApplication(DefaultApplication.java:100)
+	at org.mule.tooling.client.internal.ApplicationConnectivityTestingService.doTestConnection(ApplicationConnectivityTestingService.java:45)
+	at org.mule.tooling.client.internal.AbstractConnectivityTestingService.testConnection(AbstractConnectivityTestingService.java:44)
+	at org.mule.tooling.client.internal.AbstractConnectivityTestingService.invokeMethod(AbstractConnectivityTestingService.java:57)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.lang.reflect.Method.invoke(Method.java:498)
+	at org.mule.tooling.client.bootstrap.internal.reflection.Dispatcher$ToolingCallable.call(Dispatcher.java:223)
+	at java.util.concurrent.FutureTask.run(FutureTask.java:266)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1149)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:624)
+	at java.lang.Thread.run(Thread.java:748)
+
+!ENTRY org.mule.tooling.core 1 0 2018-08-28 14:45:04.632
+!MESSAGE Number of server definitions: 1
+
+!ENTRY org.mule.tooling.core 1 0 2018-08-28 14:45:06.449
+!MESSAGE Instance C:\MyPOCs\Mulesoft_Work\AnypointStudio\configuration\org.eclipse.osgi\424\data\.runtimes\tooling-aabcz9mz was not deleted
+
+!ENTRY org.mule.tooling.core 1 0 2018-08-28 14:45:06.449
+!MESSAGE Creating tooling instance
+
+!ENTRY org.mule.tooling.core 1 0 2018-08-28 14:45:06.464
+!MESSAGE Copying mule instance as tooling instance
+
+!ENTRY org.mule.tooling.core 1 0 2018-08-28 14:45:13.360
+!MESSAGE Tooling path: C:\MyPOCs\Mulesoft_Work\AnypointStudio\configuration\org.eclipse.osgi\424\data\.runtimes\tooling-im86mpnj
+
+!ENTRY org.mule.tooling.core 1 0 2018-08-28 14:45:13.362
+!MESSAGE Tooling version: 4.1.3
+
+!ENTRY org.mule.tooling.core 1 0 2018-08-28 14:45:13.362
+!MESSAGE Starting tooling instance
+
+!ENTRY org.mule.tooling.core 1 0 2018-08-28 14:45:13.362
+!MESSAGE Tooling startup timeout: 90s
+
+!ENTRY org.mule.tooling.core 1 0 2018-08-28 14:45:15.774
+!MESSAGE Tooling up and running
+
+!ENTRY org.mule.tooling.core 4 0 2018-08-28 14:45:50.717
+!MESSAGE Error while doing connectivity test
+!STACK 0
+org.mule.tooling.client.api.exception.DeploymentException: Couldn't deploy the application
+org.mule.tooling.agent.rest.client.exceptions.ToolingServiceAPIException: HTTP 502 cannotconnect. <html>
+<!-- FileName: index.html
+     Language: [en]
+-->
+<!--Head-->
+<head>
+  <meta http-equiv="X-UA-Compatible" content="IE=7" />
+<link rel="stylesheet" media="screen" href="/mwg-internal/de5fs23hu73ds/files/default/layout.css" type="text/css"> 
+ <link rel="stylesheet" media="screen" href="/mwg-internal/de5fs23hu73ds/files/default/present.css" type="text/css">
+<!--Contents-->
+<html>
+<head>
+  <meta http-equiv="X-UA-Compatible" content="IE=7" />
+<meta content="text/html; charset=ISO-8859-1"
+http-equiv="Content-Type">
+<title></title>
+</head>
+<body>
+<br>
+<big style="font-weight: bold;"><big><big>The server is down or
+refusing connections</big></big></big><br>
+<hr style="width: 100%; height: 2px;"><br>
+&nbsp;<br>
+Most likely causes:<br>
+<br>
+&nbsp;&nbsp;&nbsp; * There might be a typing error in the address.<br>
+&nbsp;&nbsp;&nbsp; * The server you are trying to access is down or
+unavailable.<br>
+&nbsp;&nbsp;&nbsp; * If you clicked on a link, it may be out of date.<br>
+<br>
+What you can try:<br>
+<br>
+&nbsp;&nbsp;&nbsp; * Retype the address.<br>
+&nbsp;&nbsp;&nbsp; * Wait and try again later.<br>
+&nbsp;&nbsp;&nbsp; * Go back to the previous page.<br>
+<hr style="width: 100%; height: 2px;"><br>
+</body>
+</html>
+
+
+<!--/Contents-->
+
+</body>
+<!--/Body-->
+</html>
+
+
+	at org.mule.tooling.agent.rest.client.exceptions.ToolingServiceAPIException.newToolingServiceAPIException(ToolingServiceAPIException.java:84)
+	at org.mule.tooling.agent.rest.client.exceptions.ToolingServiceAPIException.newToolingServiceAPIException(ToolingServiceAPIException.java:67)
+	at org.mule.tooling.agent.rest.client.tooling.applications.Applications.put(Applications.java:99)
+	at org.mule.tooling.agent.rest.client.RestAgentToolingService.lambda$deployApplication$3(RestAgentToolingService.java:166)
+	at org.mule.tooling.agent.rest.client.service.ServiceFunction.serviceCallWrapper(ServiceFunction.java:27)
+	at org.mule.tooling.agent.rest.client.RestAgentToolingService.deployApplication(RestAgentToolingService.java:165)
+	at org.mule.tooling.agent.RuntimeToolingService.deployApplication(RuntimeToolingService.java:92)
+	at org.mule.tooling.client.internal.application.FileSystemArtifactDeployer.lambda$new$2(FileSystemArtifactDeployer.java:51)
+	at org.mule.tooling.client.internal.application.FileSystemArtifactDeployer.doInternalDeploy(FileSystemArtifactDeployer.java:67)
+	at org.mule.tooling.client.internal.application.AbstractArtifactDeployer.deploy(AbstractArtifactDeployer.java:52)
+	at org.mule.tooling.client.internal.application.DefaultApplication.evaluateWithRemoteApplication(DefaultApplication.java:100)
+	at org.mule.tooling.client.internal.ApplicationConnectivityTestingService.doTestConnection(ApplicationConnectivityTestingService.java:45)
+	at org.mule.tooling.client.internal.AbstractConnectivityTestingService.testConnection(AbstractConnectivityTestingService.java:44)
+	at org.mule.tooling.client.internal.AbstractConnectivityTestingService.invokeMethod(AbstractConnectivityTestingService.java:57)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.lang.reflect.Method.invoke(Method.java:498)
+	at org.mule.tooling.client.bootstrap.internal.reflection.Dispatcher$ToolingCallable.call(Dispatcher.java:223)
+	at java.util.concurrent.FutureTask.run(FutureTask.java:266)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1149)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:624)
+	at java.lang.Thread.run(Thread.java:748)
+
+	at org.mule.tooling.agent.rest.client.RestAgentToolingService.deployApplication(RestAgentToolingService.java:175)
+	at org.mule.tooling.agent.RuntimeToolingService.deployApplication(RuntimeToolingService.java:92)
+	at org.mule.tooling.client.internal.application.FileSystemArtifactDeployer.lambda$new$2(FileSystemArtifactDeployer.java:51)
+	at org.mule.tooling.client.internal.application.FileSystemArtifactDeployer.doInternalDeploy(FileSystemArtifactDeployer.java:67)
+	at org.mule.tooling.client.internal.application.AbstractArtifactDeployer.deploy(AbstractArtifactDeployer.java:52)
+	at org.mule.tooling.client.internal.application.DefaultApplication.evaluateWithRemoteApplication(DefaultApplication.java:100)
+	at org.mule.tooling.client.internal.ApplicationConnectivityTestingService.doTestConnection(ApplicationConnectivityTestingService.java:45)
+	at org.mule.tooling.client.internal.AbstractConnectivityTestingService.testConnection(AbstractConnectivityTestingService.java:44)
+	at org.mule.tooling.client.internal.AbstractConnectivityTestingService.invokeMethod(AbstractConnectivityTestingService.java:57)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.lang.reflect.Method.invoke(Method.java:498)
+	at org.mule.tooling.client.bootstrap.internal.reflection.Dispatcher$ToolingCallable.call(Dispatcher.java:223)
+	at java.util.concurrent.FutureTask.run(FutureTask.java:266)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1149)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:624)
+	at java.lang.Thread.run(Thread.java:748)
+
+!ENTRY org.eclipse.jface 2 0 2018-08-28 14:46:08.750
+!MESSAGE Keybinding conflicts occurred.  They may interfere with normal accelerator operation.
+!SUBENTRY 1 org.eclipse.jface 2 0 2018-08-28 14:46:08.750
+!MESSAGE A conflict occurred for CTRL+SHIFT+P:
+Binding(CTRL+SHIFT+P,
+	ParameterizedCommand(Command(org.mule.tooling.ui.exportImageCommand,Export image,
+		Export image,
+		Category(org.mule.tooling.ui.commandcategory,org.mule.tooling.ui.commandcategory,Category for menu commands,true),
+		org.eclipse.ui.internal.WorkbenchHandlerServiceHandler@361c008,
+		,,true),null),
+	org.eclipse.ui.defaultAcceleratorConfiguration,
+	org.mule.tooling.keybindings.contexts.muleStudio,,,system)
+Binding(CTRL+SHIFT+P,
+	ParameterizedCommand(Command(org.mule.tooling.ui.dfl.contribution.commands.turnOnOffPreviewCommand,Turn on/off preview,
+		Turn on/off preview,
+		Category(org.mule.tooling.ui.commandcategory,org.mule.tooling.ui.commandcategory,Category for menu commands,true),
+		org.eclipse.ui.internal.WorkbenchHandlerServiceHandler@4b5455c6,
+		,,true),null),
+	org.eclipse.ui.defaultAcceleratorConfiguration,
+	org.mule.tooling.contexts.mulePropertiesEditor,,,system)
+
+!ENTRY org.mule.tooling.core 1 0 2018-08-28 15:17:55.117
+!MESSAGE Number of server definitions: 1
+
+!ENTRY org.mule.tooling.core 1 0 2018-08-28 15:17:55.117
+!MESSAGE Metadata was not read from C:\MyPOCs\Mulesoft_Work\AnypointStudio\configuration\org.eclipse.osgi\424\data\.runtimes\tooling-aabcz9mz
+
+!ENTRY org.mule.tooling.core 1 0 2018-08-28 15:17:57.707
+!MESSAGE Instance C:\MyPOCs\Mulesoft_Work\AnypointStudio\configuration\org.eclipse.osgi\424\data\.runtimes\tooling-im86mpnj was not deleted
+
+!ENTRY org.mule.tooling.core 1 0 2018-08-28 15:17:57.722
+!MESSAGE Creating tooling instance
+
+!ENTRY org.mule.tooling.core 1 0 2018-08-28 15:17:57.722
+!MESSAGE Copying mule instance as tooling instance
+
+!ENTRY org.mule.tooling.core 1 0 2018-08-28 15:18:05.181
+!MESSAGE Tooling path: C:\MyPOCs\Mulesoft_Work\AnypointStudio\configuration\org.eclipse.osgi\424\data\.runtimes\tooling-ymrrljyf
+
+!ENTRY org.mule.tooling.core 1 0 2018-08-28 15:18:05.181
+!MESSAGE Tooling version: 4.1.3
+
+!ENTRY org.mule.tooling.core 1 0 2018-08-28 15:18:05.181
+!MESSAGE Starting tooling instance
+
+!ENTRY org.mule.tooling.core 1 0 2018-08-28 15:18:05.181
+!MESSAGE Tooling startup timeout: 90s
+
+!ENTRY org.mule.tooling.core 1 0 2018-08-28 15:18:08.009
+!MESSAGE Tooling up and running
+
+!ENTRY org.mule.tooling.core 4 0 2018-08-28 15:18:12.670
+!MESSAGE Error while doing connectivity test
+!STACK 0
+org.mule.tooling.client.api.exception.DeploymentException: Couldn't deploy the application
+org.mule.tooling.agent.rest.client.exceptions.ToolingServiceAPIException: HTTP 502 cannotconnect. <html>
+<!-- FileName: index.html
+     Language: [en]
+-->
+<!--Head-->
+<head>
+  <meta http-equiv="X-UA-Compatible" content="IE=7" />
+<link rel="stylesheet" media="screen" href="/mwg-internal/de5fs23hu73ds/files/default/layout.css" type="text/css"> 
+ <link rel="stylesheet" media="screen" href="/mwg-internal/de5fs23hu73ds/files/default/present.css" type="text/css">
+<!--Contents-->
+<html>
+<head>
+  <meta http-equiv="X-UA-Compatible" content="IE=7" />
+<meta content="text/html; charset=ISO-8859-1"
+http-equiv="Content-Type">
+<title></title>
+</head>
+<body>
+<br>
+<big style="font-weight: bold;"><big><big>The server is down or
+refusing connections</big></big></big><br>
+<hr style="width: 100%; height: 2px;"><br>
+&nbsp;<br>
+Most likely causes:<br>
+<br>
+&nbsp;&nbsp;&nbsp; * There might be a typing error in the address.<br>
+&nbsp;&nbsp;&nbsp; * The server you are trying to access is down or
+unavailable.<br>
+&nbsp;&nbsp;&nbsp; * If you clicked on a link, it may be out of date.<br>
+<br>
+What you can try:<br>
+<br>
+&nbsp;&nbsp;&nbsp; * Retype the address.<br>
+&nbsp;&nbsp;&nbsp; * Wait and try again later.<br>
+&nbsp;&nbsp;&nbsp; * Go back to the previous page.<br>
+<hr style="width: 100%; height: 2px;"><br>
+</body>
+</html>
+
+
+<!--/Contents-->
+
+</body>
+<!--/Body-->
+</html>
+
+
+	at org.mule.tooling.agent.rest.client.exceptions.ToolingServiceAPIException.newToolingServiceAPIException(ToolingServiceAPIException.java:84)
+	at org.mule.tooling.agent.rest.client.exceptions.ToolingServiceAPIException.newToolingServiceAPIException(ToolingServiceAPIException.java:67)
+	at org.mule.tooling.agent.rest.client.tooling.applications.Applications.put(Applications.java:99)
+	at org.mule.tooling.agent.rest.client.RestAgentToolingService.lambda$deployApplication$3(RestAgentToolingService.java:166)
+	at org.mule.tooling.agent.rest.client.service.ServiceFunction.serviceCallWrapper(ServiceFunction.java:27)
+	at org.mule.tooling.agent.rest.client.RestAgentToolingService.deployApplication(RestAgentToolingService.java:165)
+	at org.mule.tooling.agent.RuntimeToolingService.deployApplication(RuntimeToolingService.java:92)
+	at org.mule.tooling.client.internal.application.FileSystemArtifactDeployer.lambda$new$2(FileSystemArtifactDeployer.java:51)
+	at org.mule.tooling.client.internal.application.FileSystemArtifactDeployer.doInternalDeploy(FileSystemArtifactDeployer.java:67)
+	at org.mule.tooling.client.internal.application.AbstractArtifactDeployer.deploy(AbstractArtifactDeployer.java:52)
+	at org.mule.tooling.client.internal.application.DefaultApplication.evaluateWithRemoteApplication(DefaultApplication.java:100)
+	at org.mule.tooling.client.internal.ApplicationConnectivityTestingService.doTestConnection(ApplicationConnectivityTestingService.java:45)
+	at org.mule.tooling.client.internal.AbstractConnectivityTestingService.testConnection(AbstractConnectivityTestingService.java:44)
+	at org.mule.tooling.client.internal.AbstractConnectivityTestingService.invokeMethod(AbstractConnectivityTestingService.java:57)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.lang.reflect.Method.invoke(Method.java:498)
+	at org.mule.tooling.client.bootstrap.internal.reflection.Dispatcher$ToolingCallable.call(Dispatcher.java:223)
+	at java.util.concurrent.FutureTask.run(FutureTask.java:266)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1149)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:624)
+	at java.lang.Thread.run(Thread.java:748)
+
+	at org.mule.tooling.agent.rest.client.RestAgentToolingService.deployApplication(RestAgentToolingService.java:175)
+	at org.mule.tooling.agent.RuntimeToolingService.deployApplication(RuntimeToolingService.java:92)
+	at org.mule.tooling.client.internal.application.FileSystemArtifactDeployer.lambda$new$2(FileSystemArtifactDeployer.java:51)
+	at org.mule.tooling.client.internal.application.FileSystemArtifactDeployer.doInternalDeploy(FileSystemArtifactDeployer.java:67)
+	at org.mule.tooling.client.internal.application.AbstractArtifactDeployer.deploy(AbstractArtifactDeployer.java:52)
+	at org.mule.tooling.client.internal.application.DefaultApplication.evaluateWithRemoteApplication(DefaultApplication.java:100)
+	at org.mule.tooling.client.internal.ApplicationConnectivityTestingService.doTestConnection(ApplicationConnectivityTestingService.java:45)
+	at org.mule.tooling.client.internal.AbstractConnectivityTestingService.testConnection(AbstractConnectivityTestingService.java:44)
+	at org.mule.tooling.client.internal.AbstractConnectivityTestingService.invokeMethod(AbstractConnectivityTestingService.java:57)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.lang.reflect.Method.invoke(Method.java:498)
+	at org.mule.tooling.client.bootstrap.internal.reflection.Dispatcher$ToolingCallable.call(Dispatcher.java:223)
+	at java.util.concurrent.FutureTask.run(FutureTask.java:266)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1149)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:624)
+	at java.lang.Thread.run(Thread.java:748)
+
+!ENTRY org.eclipse.jface 2 0 2018-08-28 15:18:21.166
+!MESSAGE Keybinding conflicts occurred.  They may interfere with normal accelerator operation.
+!SUBENTRY 1 org.eclipse.jface 2 0 2018-08-28 15:18:21.166
+!MESSAGE A conflict occurred for CTRL+SHIFT+I:
+Binding(CTRL+SHIFT+I,
+	ParameterizedCommand(Command(org.eclipse.jdt.debug.ui.commands.Inspect,Inspect,
+		Inspect result of evaluating selected text,
+		Category(org.eclipse.debug.ui.category.run,Run/Debug,Run/Debug command category,true),
+		org.eclipse.ui.internal.WorkbenchHandlerServiceHandler@1d5ba943,
+		,,true),null),
+	org.eclipse.ui.defaultAcceleratorConfiguration,
+	org.eclipse.ui.contexts.dialogAndWindow,,,system)
+Binding(CTRL+SHIFT+I,
+	ParameterizedCommand(Command(org.mule.tooling.ui.dfl.contribution.commands.inputSearchCommand,Input Search,
+		Input Search,
+		Category(org.mule.tooling.ui.commandcategory,org.mule.tooling.ui.commandcategory,Category for menu commands,true),
+		org.eclipse.ui.internal.WorkbenchHandlerServiceHandler@36f50eef,
+		,,true),null),
+	org.eclipse.ui.defaultAcceleratorConfiguration,
+	org.mule.tooling.contexts.mulePropertiesEditor,,,system)
+Binding(CTRL+SHIFT+I,
+	ParameterizedCommand(Command(org.raml.commands.extractToFile,Extract to included file,
+		Extract a piece of code into another file,
+		Category(org.raml.commands.category,RAML editor category,Commands related to the RAML plugin,true),
+		org.eclipse.ui.internal.WorkbenchHandlerServiceHandler@250feea4,
+		,,true),null),
+	org.eclipse.ui.defaultAcceleratorConfiguration,
+	org.raml.editor.RAMLScope,,,system)
+
+!ENTRY org.mule.tooling.core 1 0 2018-08-28 16:05:42.164
+!MESSAGE Number of server definitions: 1
+
+!ENTRY org.mule.tooling.core 1 0 2018-08-28 16:05:42.170
+!MESSAGE Metadata was not read from C:\MyPOCs\Mulesoft_Work\AnypointStudio\configuration\org.eclipse.osgi\424\data\.runtimes\tooling-im86mpnj
+
+!ENTRY org.mule.tooling.core 1 0 2018-08-28 16:05:44.566
+!MESSAGE Instance C:\MyPOCs\Mulesoft_Work\AnypointStudio\configuration\org.eclipse.osgi\424\data\.runtimes\tooling-ymrrljyf was not deleted
+
+!ENTRY org.mule.tooling.core 1 0 2018-08-28 16:05:44.576
+!MESSAGE Creating tooling instance
+
+!ENTRY org.mule.tooling.core 1 0 2018-08-28 16:05:44.585
+!MESSAGE Copying mule instance as tooling instance
+
+!ENTRY org.mule.tooling.core 1 0 2018-08-28 16:05:49.759
+!MESSAGE Tooling path: C:\MyPOCs\Mulesoft_Work\AnypointStudio\configuration\org.eclipse.osgi\424\data\.runtimes\tooling-u9adab4a
+
+!ENTRY org.mule.tooling.core 1 0 2018-08-28 16:05:49.761
+!MESSAGE Tooling version: 4.1.3
+
+!ENTRY org.mule.tooling.core 1 0 2018-08-28 16:05:49.762
+!MESSAGE Starting tooling instance
+
+!ENTRY org.mule.tooling.core 1 0 2018-08-28 16:05:49.764
+!MESSAGE Tooling startup timeout: 90s
+
+!ENTRY org.mule.tooling.core 1 0 2018-08-28 16:05:53.389
+!MESSAGE Tooling up and running
+
+!ENTRY org.mule.tooling.core 4 0 2018-08-28 16:05:56.109
+!MESSAGE Error while doing connectivity test
+!STACK 0
+org.mule.tooling.client.api.exception.DeploymentException: Couldn't deploy the application
+org.mule.tooling.agent.rest.client.exceptions.ToolingServiceAPIException: HTTP 502 cannotconnect. <html>
+<!-- FileName: index.html
+     Language: [en]
+-->
+<!--Head-->
+<head>
+  <meta http-equiv="X-UA-Compatible" content="IE=7" />
+<link rel="stylesheet" media="screen" href="/mwg-internal/de5fs23hu73ds/files/default/layout.css" type="text/css"> 
+ <link rel="stylesheet" media="screen" href="/mwg-internal/de5fs23hu73ds/files/default/present.css" type="text/css">
+<!--Contents-->
+<html>
+<head>
+  <meta http-equiv="X-UA-Compatible" content="IE=7" />
+<meta content="text/html; charset=ISO-8859-1"
+http-equiv="Content-Type">
+<title></title>
+</head>
+<body>
+<br>
+<big style="font-weight: bold;"><big><big>The server is down or
+refusing connections</big></big></big><br>
+<hr style="width: 100%; height: 2px;"><br>
+&nbsp;<br>
+Most likely causes:<br>
+<br>
+&nbsp;&nbsp;&nbsp; * There might be a typing error in the address.<br>
+&nbsp;&nbsp;&nbsp; * The server you are trying to access is down or
+unavailable.<br>
+&nbsp;&nbsp;&nbsp; * If you clicked on a link, it may be out of date.<br>
+<br>
+What you can try:<br>
+<br>
+&nbsp;&nbsp;&nbsp; * Retype the address.<br>
+&nbsp;&nbsp;&nbsp; * Wait and try again later.<br>
+&nbsp;&nbsp;&nbsp; * Go back to the previous page.<br>
+<hr style="width: 100%; height: 2px;"><br>
+</body>
+</html>
+
+
+<!--/Contents-->
+
+</body>
+<!--/Body-->
+</html>
+
+
+	at org.mule.tooling.agent.rest.client.exceptions.ToolingServiceAPIException.newToolingServiceAPIException(ToolingServiceAPIException.java:84)
+	at org.mule.tooling.agent.rest.client.exceptions.ToolingServiceAPIException.newToolingServiceAPIException(ToolingServiceAPIException.java:67)
+	at org.mule.tooling.agent.rest.client.tooling.applications.Applications.put(Applications.java:99)
+	at org.mule.tooling.agent.rest.client.RestAgentToolingService.lambda$deployApplication$3(RestAgentToolingService.java:166)
+	at org.mule.tooling.agent.rest.client.service.ServiceFunction.serviceCallWrapper(ServiceFunction.java:27)
+	at org.mule.tooling.agent.rest.client.RestAgentToolingService.deployApplication(RestAgentToolingService.java:165)
+	at org.mule.tooling.agent.RuntimeToolingService.deployApplication(RuntimeToolingService.java:92)
+	at org.mule.tooling.client.internal.application.FileSystemArtifactDeployer.lambda$new$2(FileSystemArtifactDeployer.java:51)
+	at org.mule.tooling.client.internal.application.FileSystemArtifactDeployer.doInternalDeploy(FileSystemArtifactDeployer.java:67)
+	at org.mule.tooling.client.internal.application.AbstractArtifactDeployer.deploy(AbstractArtifactDeployer.java:52)
+	at org.mule.tooling.client.internal.application.DefaultApplication.evaluateWithRemoteApplication(DefaultApplication.java:100)
+	at org.mule.tooling.client.internal.ApplicationConnectivityTestingService.doTestConnection(ApplicationConnectivityTestingService.java:45)
+	at org.mule.tooling.client.internal.AbstractConnectivityTestingService.testConnection(AbstractConnectivityTestingService.java:44)
+	at org.mule.tooling.client.internal.AbstractConnectivityTestingService.invokeMethod(AbstractConnectivityTestingService.java:57)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.lang.reflect.Method.invoke(Method.java:498)
+	at org.mule.tooling.client.bootstrap.internal.reflection.Dispatcher$ToolingCallable.call(Dispatcher.java:223)
+	at java.util.concurrent.FutureTask.run(FutureTask.java:266)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1149)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:624)
+	at java.lang.Thread.run(Thread.java:748)
+
+	at org.mule.tooling.agent.rest.client.RestAgentToolingService.deployApplication(RestAgentToolingService.java:175)
+	at org.mule.tooling.agent.RuntimeToolingService.deployApplication(RuntimeToolingService.java:92)
+	at org.mule.tooling.client.internal.application.FileSystemArtifactDeployer.lambda$new$2(FileSystemArtifactDeployer.java:51)
+	at org.mule.tooling.client.internal.application.FileSystemArtifactDeployer.doInternalDeploy(FileSystemArtifactDeployer.java:67)
+	at org.mule.tooling.client.internal.application.AbstractArtifactDeployer.deploy(AbstractArtifactDeployer.java:52)
+	at org.mule.tooling.client.internal.application.DefaultApplication.evaluateWithRemoteApplication(DefaultApplication.java:100)
+	at org.mule.tooling.client.internal.ApplicationConnectivityTestingService.doTestConnection(ApplicationConnectivityTestingService.java:45)
+	at org.mule.tooling.client.internal.AbstractConnectivityTestingService.testConnection(AbstractConnectivityTestingService.java:44)
+	at org.mule.tooling.client.internal.AbstractConnectivityTestingService.invokeMethod(AbstractConnectivityTestingService.java:57)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.lang.reflect.Method.invoke(Method.java:498)
+	at org.mule.tooling.client.bootstrap.internal.reflection.Dispatcher$ToolingCallable.call(Dispatcher.java:223)
+	at java.util.concurrent.FutureTask.run(FutureTask.java:266)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1149)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:624)
+	at java.lang.Thread.run(Thread.java:748)
+
+!ENTRY org.mule.tooling.core 1 0 2018-08-28 16:09:33.336
+!MESSAGE Number of server definitions: 1
+
+!ENTRY org.mule.tooling.core 1 0 2018-08-28 16:09:33.340
+!MESSAGE Metadata was not read from C:\MyPOCs\Mulesoft_Work\AnypointStudio\configuration\org.eclipse.osgi\424\data\.runtimes\tooling-ymrrljyf
+
+!ENTRY org.mule.tooling.core 1 0 2018-08-28 16:09:35.504
+!MESSAGE Instance C:\MyPOCs\Mulesoft_Work\AnypointStudio\configuration\org.eclipse.osgi\424\data\.runtimes\tooling-u9adab4a was not deleted
+
+!ENTRY org.mule.tooling.core 1 0 2018-08-28 16:09:35.512
+!MESSAGE Creating tooling instance
+
+!ENTRY org.mule.tooling.core 1 0 2018-08-28 16:09:35.517
+!MESSAGE Copying mule instance as tooling instance
+
+!ENTRY org.mule.tooling.core 1 0 2018-08-28 16:09:40.431
+!MESSAGE Tooling path: C:\MyPOCs\Mulesoft_Work\AnypointStudio\configuration\org.eclipse.osgi\424\data\.runtimes\tooling-mxydsvjp
+
+!ENTRY org.mule.tooling.core 1 0 2018-08-28 16:09:40.432
+!MESSAGE Tooling version: 4.1.3
+
+!ENTRY org.mule.tooling.core 1 0 2018-08-28 16:09:40.443
+!MESSAGE Starting tooling instance
+
+!ENTRY org.mule.tooling.core 1 0 2018-08-28 16:09:40.444
+!MESSAGE Tooling startup timeout: 90s
+
+!ENTRY org.mule.tooling.core 1 0 2018-08-28 16:09:42.372
+!MESSAGE Tooling up and running
+
+!ENTRY org.mule.tooling.ui.contribution.munit 1 1 2018-08-29 09:11:35.325
+!MESSAGE Deleting MUnit temporary folder in C:\Users\3644692\AppData\Local\Temp\munit-temp-dir
+
+!ENTRY org.mule.tooling.analytics 1 0 2018-08-29 09:11:35.341
+!MESSAGE Analytics shutdown successfully

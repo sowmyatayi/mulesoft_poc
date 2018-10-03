@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<schema xmlns="http://www.w3.org/2001/XMLSchema" targetNamespace="http://www.example.org/CustomerDetails" xmlns:tns="http://www.example.org/CustomerDetails" elementFormDefault="qualified">
+ <import schemaLocation="../Common/CommonTypes.xsd" namespace="http://www.example.org/CommonTypes"></import>
+   
+    <element name="CustomerDetails" type="tns:CustomerType"></element>
+
+    <complexType name="CustomerType">
+    	<sequence>
+    		<element name="FirstName" type="string"></element>
+    		<element name="LastName" type="string"></element>
+    		<element name="EmailID" type="string"></element>
+    		<element name="UserID" type="string"></element>
+    		<element name="Password" type="string"></element>
+    		<element name="Addresses" type="string"
+    			maxOccurs="unbounded" minOccurs="1">
+    		</element>
+    		<element name="PaymentDetails" type="string" maxOccurs="unbounded" minOccurs="1"></element>
+    	</sequence>
+    </complexType>
+</schema>
